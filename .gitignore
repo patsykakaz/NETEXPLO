@@ -4,4 +4,9 @@
 .DS_Store
 .coverage
 local_settings.py
-/static
+/static/*
+!/static/css
+!/static/js
+!/static/fonts
+!/static/img
+

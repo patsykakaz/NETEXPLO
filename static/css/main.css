@@ -1,0 +1,147 @@
+
+/*========================================
+        GENERAL STYLES
+==========================================*/
+
+body{
+    /*margin-top: 20px;*/
+    font-family: 'intelolight';
+    letter-spacing: 1.4px;
+}
+
+
+
+#main{
+    margin: 0;
+}
+
+/* NAVBAR */
+#cat_login{
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 999px;
+    color: white;
+}
+/* ../NAVBAR */
+
+footer{
+    /*margin-top: 100px;*/
+    padding: 80px 40px;
+    background-color: rgb(228,224,222);
+    color: #1d262b;
+}
+
+/*========================================
+        HELPERS STYLES
+==========================================*/
+
+.fullScreenOverlay{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.7);
+    background: linear-gradient(to bottom,rgba(0,0,0,.7) 0,rgba(0,0,0,.4) 25%,rgba(0,0,0,.25) 61%,rgba(0,0,0,.1) 100%)
+}
+
+
+/*========================================
+        BOOTSTRAP OVERRIDES
+==========================================*/
+
+
+.navbar{
+    padding: 0;
+    /*min-height: 80px;*/
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    /*font-family: 'intelosemibold';*/
+}.navbar.navbar-deploy{
+    box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
+}
+#nav-container{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    -moz-transition: all .45s ease-out;
+    -webkit-transition: all .45s ease-out;
+    -o-transition: all .45s ease-out;
+    transition: all .45s ease-out;
+}
+.navbar-deploy #nav-container{
+    width: 100%;
+    padding: 5px 4% 15px 4%;
+    background-color: rgb(255,255,255);
+}
+.navbar-brand{
+    height: 85px;
+    padding: 0 15px;
+    -moz-transition: all .45s ease-in-out;
+    -webkit-transition: all .45s ease-in-out;
+    -o-transition: all .45s ease-in-out;
+    transition: all .45s ease-in-out;
+}.navbar-deploy .navbar-brand{
+    height: 70px;
+}
+#logo{
+    height: 65px;
+    margin-top: 10px;
+    -moz-transition: all .45s ease-in-out;
+    -webkit-transition: all .45s ease-in-out;
+    -o-transition: all .45s ease-in-out;
+    transition: all .45s ease-in-out;
+}
+#SVG{
+}
+._NET_, ._EXPLO_, ._OBS_{
+    -webkit-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+    -moz-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+    -ms-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+    -o-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+    transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+}
+.navbar-deploy #logo{
+    height: 55px;
+    margin-bottom: 5px;
+}
+
+.navbar-nav{
+    margin-top: 25px;
+}
+.navbar-collapse.navbar-right{
+    border-bottom: 1px solid;
+    border-bottom: none;
+    border-color: #FFFFFF;
+    text-transform: uppercase;
+}.navbar-deploy .navbar-collapse.navbar-right{
+    border-color: transparent;
+}
+.navbar-collapse.navbar-right.dark{
+    border-color: rgba(0,0,0,.3);
+}
+.navbar-deploy .navbar-collapse.navbar-right.dark, .navbar-deploy .navbar-collapse.navbar-right.white{
+    border-color: transparent;
+}
+.navbar-nav > li > a{
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.nav > li > a, .nav > li > a:hover, .nav > li > a:focus,
+.navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus{
+    background-color: transparent;
+    color: #FFFFFF;
+}
+.dark .nav > li > a, .dark .nav > li > a:hover, .dark .nav > li > a:focus,
+.dark .nav > .active > a, .dark .nav > .active > a:hover, .dark .nav > .active > a:focus{
+    /*background-color: transparent;*/
+    color: #373d40;
+}
+
+.navbar-deploy .nav > li > a, .navbar-deploy .nav > li > a:hover, .navbar-deploy .nav > li > a:focus{
+    background-color: transparent;
+    color: #373d40;
+}
+
+.list-unstyled{
+    display: inline-block;
+    margin: 0 20px;
+}
+

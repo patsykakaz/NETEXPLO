@@ -1,0 +1,58 @@
+
+/*========================================
+        FONTS STYLES
+==========================================*/
+
+
+@font-face {
+    font-family: 'intelohairline_italic';
+    src: url('../fonts/kastelov_-_intelo_hairline_italic-webfont.woff2') format('woff2'),
+         url('../fonts/kastelov_-_intelo_hairline_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'intelohairline';
+    src: url('../fonts/kastelov_-_intelo_hairline-webfont.woff2') format('woff2'),
+         url('../fonts/kastelov_-_intelo_hairline-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'intelolight_italic';
+    src: url('../fonts/kastelov_-_intelo_light_italic-webfont.woff2') format('woff2'),
+         url('../fonts/kastelov_-_intelo_light_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'intelolight';
+    src: url('../fonts/kastelov_-_intelo_light-webfont.woff2') format('woff2'),
+         url('../fonts/kastelov_-_intelo_light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'intelosemibold_italic';
+    src: url('../fonts/kastelov_-_intelo_semibold_italic-webfont.woff2') format('woff2'),
+         url('../fonts/kastelov_-_intelo_semibold_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'intelosemibold';
+    src: url('../fonts/kastelov_-_intelo_semibold-webfont.woff2') format('woff2'),
+         url('../fonts/kastelov_-_intelo_semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

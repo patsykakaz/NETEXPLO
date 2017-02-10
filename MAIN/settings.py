@@ -92,7 +92,7 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -213,6 +213,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "mezzanine.conf.context_processors.settings",
                 "mezzanine.pages.context_processors.page",
+                "MAIN.context_processors.customContextProcessor",
             ],
             "builtins": [
                 "mezzanine.template.loader_tags",
@@ -249,6 +250,7 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     # "mezzanine.accounts",
     # "mezzanine.mobile",
+    "MAIN",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "css/index.css" %}">
+<style type="text/css">
+    footer{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        background-color: #FFFFFF;
+    }
+    #footer{
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('footer').css('top',$(window).height()+$('#main').outerHeight());
+    });
+</script>
+{% endblock %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{# {% block breadcrumb_menu %} #}
+{# <li class="active">{% trans "Home" %}</li> #}
+{# {% endblock %} #}
+
+{% block main %}
+
+{% if Home.video %}
+    <div id='xxx'>
+    <div id='video_layer'>
+        {% if Home.video %}
+        <video id="bgvid" playsinline autoplay muted loop poster="{{ MEDIA_URL }}{{ Home.video.illustration_alt }}" id="illustration video alt">
+            {# <source src="polina.webm" type="video/webm"> #}
+            <source src="{{ MEDIA_URL }}{{ Home.video.file }}" type="video/mp4">
+        </video>
+        {% endif %}
+    </div>
+    </div>
+{% else %}
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        {# <ol class="carousel-indicators"> #}
+            {# {% for element in HomeX_data.inlines %} #}
+                {# <li data-target="#carousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter0 == 0 %}class="active" {% endif %}></li> #}
+            {# {% endfor %} #}
+        {# </ol> #}
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            {% for element in Home.captions %}
+                <div class="item {% if forloop.counter0 == 0 %}active{% endif %}">
+                    <a {% if not element.lien %}href='javascript:void(0)'{% else %} href='{{ element.lien }}'{% endif %}
+                        {% if element.external %}target='blank'{% endif %} >
+                        <img src='{{ MEDIA_URL }}{{ element.image }}' alt='illustration {{ element }}'>
+                    </a>
+                </div>
+            {% endfor %}
+
+        </div>
+        <!-- Controls -->
+        {# <a class="left carousel-control" href="#carousel" role="button" data-slide="prev"> #}
+            {# <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> #}
+            {# <span class="sr-only">Previous</span> #}
+        {# </a> #}
+        {# <a class="right carousel-control" href="#carousel" role="button" data-slide="next"> #}
+            {# <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> #}
+            {# <span class="sr-only">Next</span> #}
+        {# </a> #}
+    </div>
+{% endif %}
+
+<div id='main' class='container'>
+    <div class='row'>
+        <div class='col-md-10 col-md-offset-1'>
+            <p>
+"Elk gebouw is ooit iemands trots geweest. Er zijn verhalen ingedommeld en onder het stof verstopt. Deze gebouwen wachten… wachten tot iemand ze nieuw leven in blaast. Iemand die gelooft in de slapende schoonheid van deze gebouwen en nieuwe verhalen geboren laat worden'. 
+</p>
+<p>
+Met deze gedachte heeft onze opdrachtgever in de Dadelstraat, een autoluw straatje in het hart van Wittevrouwen, een zwaar verwaarloosde arbeiderswoning uit eind 1800 tot in de kleinste details hoogwaardig verbouwd tot iets unieks. 
+</p>
+<p>
+Wittevrouwen is een wijk die bekend staat om haar leuke mensen, gezelligheid en het buurtgevoel. De wijk is gelegen op loopafstand van de oude binnenstad en je vind er veel gezellige ontbijtstekjes en goede restaurants. Aan groen geen gebrek door het nabij gelegen Griftpark. Het Centraal Station is niet ver en met de auto ben je zo de stad uit. Wat wil je nog meer? 
+            </p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

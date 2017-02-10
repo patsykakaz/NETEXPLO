@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+{% compress css %}
+<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+<link rel="stylesheet" href="{% static "css/fonts.css" %}">
+{# <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}"> #}
+<link rel="stylesheet" href="{% static "css/main.css" %}">
+<link rel="stylesheet" href="{% static "css/test.css" %}">
+{# {% if LANGUAGE_BIDI %} #}
+{# <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}"> #}
+{# {% endif %} #}
+{# {% endifinstalled %} #}
+{% block extra_css %}{% endblock %}
+{% if customColor %}
+<style type="text/css">
+    /*.navbar-deploy .navbar-nav > li > a,{*/
+        /*color: {{ customColor.1 }};*/
+    /*}*/
+    footer, footer a, footer a:hover,
+    .navbar-deploy .navbar-nav > li > a,
+    .navbar-deploy .navbar-nav > .active > a, .navbar-deploy .navbar-nav > .active > a:hover, .navbar-deploy .navbar-nav > .active > a:focus{
+        color: {{ customColor.1 }};
+    }
+    #cat_login{
+        background-color: {{ customColor.1 }};
+        border-color: {{ customColor.1 }};
+    }
+</style>
+{% endif %}
+{% endcompress %}
+
+{% compress js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/bootstrap-extras.js" %}"></script>
+{% if customColor %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('{{ customColor.1 }}');
+        fillNET( '{{ customColor.1 }}' );
+        fillOBS( '{{ customColor.1 }}' );
+        {% if darken_navbar %}
+        fillEXPLO('#373d40');
+        {% else %}
+        fillEXPLO('#FFFFFF');
+        {% endif %}
+    });
+    $(document).scroll(function(){
+        if($(document).scrollTop() < navbarTrigger){
+            // fillNET( '{{ customColor.1 }}' );
+            // fillOBS( '{{ customColor.1 }}' );
+            {% if darken_navbar %}
+            fillEXPLO('#373d40');
+            {% else %}
+            fillEXPLO('#FFFFFF');
+            {% endif %}
+        }else{
+            fillEXPLO('#373d40');
+        }
+    });
+</script>
+{% endif %}
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+
+<!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+
+{% block extra_head %}{% endblock %}
+</head>
+
+<body id="{% block body_id %}body{% endblock %}">
+
+<div class="navbar navbar-fixed-top" role="navigation">
+<div id='nav-container' class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">{% trans "Toggle Navigation" %}</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        {% block navbar_title %}
+        {% if settings.SITE_TITLE %}
+            <a id='SVG' class="navbar-brand" href="/">
+                {% include "netexplo.svg" %}
+            </a>
+        {% endif %}
+
+        {% endblock%}
+    </div>
+    <div class="navbar-collapse navbar-right collapse {% if darken_navbar %}dark{% endif %}">
+        {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
+    </div>
+</div>
+</div>
+
+<div class="container hide">
+
+    {% nevercache %}
+    {% if messages %}
+    <div class="messages">
+    {% for message in messages %}
+    <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    </div>
+    {% endif %}
+    {% endnevercache %}
+
+    <h1>{% block title %}{% endblock %}</h1>
+
+    {# <ul class="breadcrumb"> #}
+    {# {% spaceless %} #}
+    {# {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %} #}
+    {# {% endspaceless %} #}
+    {# </ul> #}
+
+</div>
+
+
+{% block main %}{% endblock %}
+
+
+<footer>
+<div id='footer' class="container">
+    <div class='row text-center'>  
+        {% include "includes/language_selector.html" %}
+        {# {% include "includes/user_panel.html" %} #}
+        {# {% block navbar_search_form %}{% search_form "all" %}{% endblock %} #}
+    </div>
+    <div class='row text-center'>
+        {% page_menu "pages/menus/footer.html" %}
+    </div>
+</div>
+</footer>
+
+{% block footer_js %}
+{% include "includes/footer_scripts.html" %}
+<script src="{% static "js/base.js" %}"></script>
+<script src="{% static "js/test.js" %}"></script>
+{% endblock %}
+
+</body>
+</html>
