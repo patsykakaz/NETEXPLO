@@ -58,28 +58,22 @@ from django.utils.translation import ugettext_lazy as _
 # ``django.models.db.`` can be omitted for regular Django model fields.
 #
 # EXTRA_MODEL_FIELDS = (
-#     (
-#         # Dotted path to field.
-#         "mezzanine.blog.models.BlogPost.image",
-#         # Dotted path to field class.
-#         "somelib.fields.ImageField",
-#         # Positional args for field class.
-#         (_("Image"),),
-#         # Keyword args for field class.
-#         {"blank": True, "upload_to": "blog"},
-#     ),
-#     # Example of adding a field to *all* of Mezzanine's content types:
-#     (
-#         "mezzanine.pages.models.Page.another_field",
-#         "IntegerField", # 'django.db.models.' is implied if path is omitted.
-#         (_("Another name"),),
-#         {"blank": True, "default": 1},
-#     ),
+    # (
+    #     # Dotted path to field.
+    #     "mezzanine.blog.models.BlogPost.image",
+    #     # Dotted path to field class.
+    #     "somelib.fields.ImageField",
+    #     # Positional args for field class.
+    #     (_("Image"),),
+    #     # Keyword args for field class.
+    #     {"blank": True, "upload_to": "blog"},
+    # ),
+    # Example of adding a field to *all* of Mezzanine's content types:
 # )
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
-# BLOG_USE_FEATURED_IMAGE = True
+BLOG_USE_FEATURED_IMAGE = True
 
 # If True, the django-modeltranslation will be added to the
 # INSTALLED_APPS setting.
@@ -112,6 +106,7 @@ LANGUAGE_CODE = "en"
 
 # Supported languages
 LANGUAGES = (
+    ('fr', _('French')),
     ('en', _('English')),
 )
 
@@ -251,6 +246,7 @@ INSTALLED_APPS = (
     # "mezzanine.accounts",
     # "mezzanine.mobile",
     "MAIN",
+    "colorfield",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

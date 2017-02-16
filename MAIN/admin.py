@@ -18,5 +18,14 @@ class HomePageAdmin(PageAdmin):
         inlines = (HomeCaptionInline,HomeVideoInline)
         fieldsets = HomePage_fieldsets
 
+Section_fieldsets = deepcopy(PageAdmin.fieldsets)
+Section_fieldsets[0][1]["fields"].insert(-1, "illustration")
+Section_fieldsets[0][1]["fields"].insert(-1, "color")
+Section_fieldsets[0][1]["fields"].insert(-1, "caption")
+class SectionAdmin(PageAdmin):
+        fieldsets = Section_fieldsets
+
+
 admin.site.register(HomePage, HomePageAdmin)
+admin.site.register(Section, SectionAdmin)
 

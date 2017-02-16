@@ -26,8 +26,10 @@ body{
 footer{
     /*margin-top: 100px;*/
     padding: 80px 40px;
+    border-top: 1px solid rgba(0,0,0,.1);
     background-color: rgb(228,224,222);
     color: #1d262b;
+    text-transform: uppercase;
 }
 
 /*========================================
@@ -55,7 +57,7 @@ footer{
     font-size: 15px;
     /*font-family: 'intelosemibold';*/
 }.navbar.navbar-deploy{
-    box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
+    box-shadow: 0 0 1px 1px rgba(0,0,0,.15);
 }
 #nav-container{
     padding-top: 15px;
@@ -71,7 +73,7 @@ footer{
     background-color: rgb(255,255,255);
 }
 .navbar-brand{
-    height: 85px;
+    height: 75px;
     padding: 0 15px;
     -moz-transition: all .45s ease-in-out;
     -webkit-transition: all .45s ease-in-out;
@@ -143,5 +145,29 @@ footer{
 .list-unstyled{
     display: inline-block;
     margin: 0 20px;
+}
+
+@media screen and (max-width: 768px){
+    .navbar-fake-deploy #nav-container{
+        width: 100%;
+        padding: 5px 4% 15px 4%;
+        background-color: rgb(255,255,255);
+    }
+    .navbar-collapse{
+        background-color: #FFFFFF;
+    }
+    .nav.navbar-nav{
+        margin-bottom: 20px;
+    }
+    .nav > li > a, .nav > li > a:hover, .nav > li > a:focus, .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus{
+        color: #373d40;
+    }
+    .nav > li:last-child{
+        display: inline-block;
+    }
+    .nav > li > a{
+        position: relative;
+        left: 10px;
+    }
 }
 

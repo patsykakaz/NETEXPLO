@@ -57,16 +57,3 @@ $(document).ready(function(){
 // })
 
 
-function fillNET(color){
-    console.log($('._NET_').length);
-    $('._NET_').css('fill',color);
-}
-function fillEXPLO(color){
-    console.log($('._EXPLO_').length);
-    $('._EXPLO_').css('fill',color);
-}
-function fillOBS(color){
-    console.log($('._OBS_').length);
-    $('._OBS_').css('fill',color);
-}
-

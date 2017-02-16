@@ -31,14 +31,21 @@
     /*.navbar-deploy .navbar-nav > li > a,{*/
         /*color: {{ customColor.1 }};*/
     /*}*/
-    footer, footer a, footer a:hover,
-    .navbar-deploy .navbar-nav > li > a,
-    .navbar-deploy .navbar-nav > .active > a, .navbar-deploy .navbar-nav > .active > a:hover, .navbar-deploy .navbar-nav > .active > a:focus{
-        color: {{ customColor.1 }};
+    .icon-bar{
+        background-color: {{ customColor }};
+    }
+
+    /*.navbar-deploy .navbar-nav > li > a,*/
+    .navbar-deploy .navbar-nav > .active > a, .navbar-deploy .navbar-nav > .active > a:hover, .navbar-deploy .navbar-nav > .active > a:focus,
+    .navbar-fake-deploy .navbar-nav > .active > a, .navbar-fake-deploy .navbar-nav > .active > a:hover, .navbar-fake-deploy .navbar-nav > .active > a:focus,
+    /* For Footer */
+    .nav-footer, .nav-footer > ul > li > a, .nav-footer > ul > li > a:hover
+    {
+        color: {{ customColor }};
     }
     #cat_login{
-        background-color: {{ customColor.1 }};
-        border-color: {{ customColor.1 }};
+        background-color: {{ customColor }};
+        border-color: {{ customColor }};
     }
 </style>
 {% endif %}
@@ -50,10 +57,10 @@
 <script src="{% static "js/bootstrap-extras.js" %}"></script>
 {% if customColor %}
 <script type="text/javascript">
+    customColor = "{{ customColor }}";
     $(document).ready(function(){
-        console.log('{{ customColor.1 }}');
-        fillNET( '{{ customColor.1 }}' );
-        fillOBS( '{{ customColor.1 }}' );
+        // fillNET( '{{ customColor }}' );
+        // fillOBS( '{{ customColor }}' );
         {% if darken_navbar %}
         fillEXPLO('#373d40');
         {% else %}
@@ -61,7 +68,7 @@
         {% endif %}
     });
     $(document).scroll(function(){
-        if($(document).scrollTop() < navbarTrigger){
+        if($(document).scrollTop() < navbarTrigger && !$('.navbar').hasClass('navbar-fake-deploy')){
             // fillNET( '{{ customColor.1 }}' );
             // fillOBS( '{{ customColor.1 }}' );
             {% if darken_navbar %}
@@ -88,7 +95,7 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 
-<div class="navbar navbar-fixed-top" role="navigation">
+<div class="navbar navbar-fixed-top {% if darken_navbar %}dark{% endif %}" role="navigation">
 <div id='nav-container' class="container">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

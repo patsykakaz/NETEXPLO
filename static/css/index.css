@@ -9,10 +9,6 @@
     border: 1px solid red;
 }
 #home_video video{
-    /*position: relative;*/
-    /*min-width: 100%;*/
-}
-#home_video video{
     /*height: 100%;*/
     width: 100%;
     left: 50%;
@@ -48,8 +44,29 @@ video{
     background-color: #edf1f2;
     color: #1d262b;
     letter-spacing: 3px;
-    line-height: 25px;
+    line-height: 30px;
+    box-shadow: 0 0 1px 1px rgba(0,0,0,.1);
 }
 #main p{
     margin: 30px 0;
+}
+
+
+
+
+
+@media screen and (max-width: 768px){
+    video{ 
+        position: relative;
+        top: 0;
+        left: -15%;
+        width: 130%;
+        /*height: 130%;*/
+        /*width: auto;*/
+        /*height: auto;*/
+        z-index: -100;
+        transform: translateY(0%) translateX(0%);
+        /*background-size: cover;*/
+        transition: 1s opacity;
+    }
 }

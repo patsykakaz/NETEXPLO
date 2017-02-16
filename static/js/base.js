@@ -4,6 +4,26 @@
 $(document).ready(function(){
     // NavBar();
     FullScreen();
+    fillNET(customColor);
+    fillOBS(customColor);
+    $('.navbar-toggle').click(function(){
+        if($('.navbar').hasClass('navbar-deploy')){
+            console.log('fake-deploy');
+            if($(document).scrollTop() < navbarTrigger){
+                $('.navbar').addClass('navbar-fake-deploy');
+                DefaultExploColor();
+            }else{
+                $('.navbar').removeClass('navbar-fake-deploy');
+            }
+        }
+        else if(!$('.navbar').hasClass('navbar-fake-deploy')){
+            $('.navbar').addClass('navbar-fake-deploy');
+            fillEXPLO('#373d40');
+        }else{
+            $('.navbar').removeClass('navbar-fake-deploy');
+            DefaultExploColor();
+        }
+    });
 });
 
 $(window).resize(function(){
@@ -20,10 +40,6 @@ function FullScreen(){
 
 
 
-
-
-
-
 // NAVBAR FOLD && UNFOLD
     navbarTrigger = 120;
     if($('#main').length > 0){
@@ -36,6 +52,10 @@ function FullScreen(){
     $(document).ready(function(){
         if($(document).scrollTop() < navbarTrigger){
             $('.navbar').removeClass('navbar-deploy');
+            if($('.navbar-collapse').hasClass('in')){
+                $('.navbar').addClass('navbar-fake-deploy');
+                FillDark();
+            }
         }else{
             $('.navbar').addClass('navbar-deploy');
         }
@@ -47,11 +67,50 @@ function FullScreen(){
     $(document).scroll(function(){
         if($(document).scrollTop() < navbarTrigger){
             $('.navbar').removeClass(' navbar-deploy');
-            $("#home_video video").get(0).play();
+            $("#video_layer video").get(0).play();
+            if($('.navbar-collapse').hasClass('in')){
+                $('.navbar').addClass('navbar-fake-deploy');
+                FillDark();
+            }
         }else{
             $('.navbar').addClass('navbar-deploy');
-            $("#home_video video").get(0).pause();
+            if($(document).scrollTop() > navbarTrigger+200){
+                $("#video_layer video").get(0).pause();
+            }
         }
         // !Gestion du LOGO
     });
-// NAVBAR FOLD && UNFOLD
+// !NAVBAR FOLD && UNFOLD
+
+
+
+
+// SVG FUNCTIONS
+function fillNET(color){
+    // console.log($('._NET_').length);
+    $('._NET_').css('fill',color);
+}
+function fillEXPLO(color){
+    // console.log($('._EXPLO_').length);
+    $('._EXPLO_').css('fill',color);
+}
+function fillOBS(color){
+    // console.log($('._OBS_').length);
+    $('._OBS_').css('fill',color);
+}
+function FillDark(){
+    fillEXPLO('#373d40');
+}
+function FillWhite(){
+    fillEXPLO('#FFFFFF');
+}
+function DefaultExploColor(){
+    if($('.navbar-collapse').hasClass('dark')){
+        fillEXPLO('#373d40');
+        // console.log('filling with black');
+    }else{
+        fillEXPLO('#FFFFFF');
+        // console.log('filling with white');
+    }
+}
+// !SVG FUNCTIONS
