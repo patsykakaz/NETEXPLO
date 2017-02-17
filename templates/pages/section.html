@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n static pages_tags mezzanine_tags blog_tags keyword_tags %}
+
+{% block extra_css %}
+{# <link rel="stylesheet" href="{% static "css/test.css" %}"> #}
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block meta_title %}{% endblock %}
+{% block title %}{% endblock %}
+
+{% block main %}
+
+<div id='header'>
+    <img src='' alt='illustration section' />
+</div>
+<div id='main' class='container'>
+    <div class='row'>
+        <div class='col-md-10 col-md-offset-1'>
+            {{ Home.caption|richtext_filters|safe }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

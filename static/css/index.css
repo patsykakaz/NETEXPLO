@@ -27,9 +27,13 @@ video{
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
- /*background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;*/
-  background-size: cover;
-  transition: 1s opacity;
+    /*background: url('//demosthenes.info/assets/images/polina.djpg') no-repeat;*/
+    background-size: cover;
+
+    -moz-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
 }
 .stopfade { 
    opacity: .5;
@@ -52,11 +56,19 @@ video{
 }
 
 
-
+footer{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background-color: rgb(249,249,249);
+}
+#footer{
+    width: 100%;
+}
 
 
 @media screen and (max-width: 768px){
-    video{ 
+    #test video{ 
         position: relative;
         top: 0;
         left: -15%;
@@ -67,6 +79,5 @@ video{
         z-index: -100;
         transform: translateY(0%) translateX(0%);
         /*background-size: cover;*/
-        transition: 1s opacity;
     }
 }

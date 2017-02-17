@@ -25,7 +25,16 @@ Section_fieldsets[0][1]["fields"].insert(-1, "caption")
 class SectionAdmin(PageAdmin):
         fieldsets = Section_fieldsets
 
+Slot_fieldsets = deepcopy(PageAdmin.fieldsets)
+Slot_fieldsets[0][1]["fields"].insert(-1, "master")
+Slot_fieldsets[0][1]["fields"].insert(-1, "illustration")
+Slot_fieldsets[0][1]["fields"].insert(-1, "color")
+Slot_fieldsets[0][1]["fields"].insert(-1, "caption")
+class SlotAdmin(PageAdmin):
+        fieldsets = Slot_fieldsets
+
 
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Section, SectionAdmin)
+admin.site.register(Slot, SlotAdmin)
 

@@ -30,7 +30,83 @@ footer{
     background-color: rgb(228,224,222);
     color: #1d262b;
     text-transform: uppercase;
+    text-decoration: underline;
 }
+.nav-footer{
+    text-align: left;
+}
+#SoMe{
+    position: relative;
+    bottom: 15px;
+    text-align: right;
+}
+.nav-footer, #SoMe{
+    opacity: .75;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}footer:hover .nav-footer, footer:hover #SoMe{
+    opacity: 1;
+}
+#Legal{
+    text-transform: lowercase;
+}
+footer .separator{
+    height: 4px;
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border-top: 1px solid;
+    border-color: rgba(0,0,0,.2);
+    opacity: .33;
+    background-color: rgb(249,249,249);
+}
+
+
+@media screen and (max-width: 991px){
+    #SoMe{
+        bottom: 30px;
+    }
+    footer .separator{
+        margin-top: 25px;
+        margin-bottom: 40px;
+    }
+}
+@media screen and (max-width: 768px){
+    .nav-footer{
+        margin-bottom: 30px;
+        text-align: center;
+        opacity: 1;
+    }
+    #SoMe{
+        margin-bottom: 30px;
+        bottom: 0;
+        text-align: center;
+        opacity: 1;
+    }
+    footer .separator{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    body{
+        font-size: 12px;
+    }
+    footer{
+        font-size: 10px;
+    }
+}
+
+
+
+
+
+
+
 
 /*========================================
         HELPERS STYLES
@@ -145,6 +221,8 @@ footer{
 .list-unstyled{
     display: inline-block;
     margin: 0 20px;
+}.list-unstyled:first-child{
+    margin-left: 0;
 }
 
 @media screen and (max-width: 768px){

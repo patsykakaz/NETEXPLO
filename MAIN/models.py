@@ -56,20 +56,21 @@ class HomeCaption(models.Model):
     illustration = FileField(verbose_name=_("illustration"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "illustration"),
         format="Image", max_length=255, null=True, blank=True)
-    color = ColorField(null=False, blank=True, default="rgb(114,196,231)")
+    color = ColorField(null=False, blank=True, default="72C4E7")
 
 class Section(Page,RichText):
     illustration = FileField(verbose_name=_("illustrationSection"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Section"),
         format="Image", max_length=255, null=False, blank=True)
-    color = ColorField(null=False, blank=True, default="rgb(114,196,231)")
+    color = ColorField(null=False, blank=True, default="72C4E7")
     caption = RichTextField()
 
 class Slot(Page,RichText):
+    master = models.ForeignKey("Section")
     illustration = FileField(verbose_name=_("illustrationSlot"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Slot"),
         format="Image", max_length=255, null=False, blank=True)
-    color = ColorField(null=False, blank=True, default="rgb(114,196,231)", verbose_name='background color')
+    color = ColorField(null=False, blank=True, default="72C4E7", verbose_name='background color')
     caption = RichTextField()
 
 class Team(Page):

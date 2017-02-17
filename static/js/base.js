@@ -67,15 +67,20 @@ function FullScreen(){
     $(document).scroll(function(){
         if($(document).scrollTop() < navbarTrigger){
             $('.navbar').removeClass(' navbar-deploy');
-            $("#video_layer video").get(0).play();
+            $("video").get(0).play();
+            // $("video").css('opacity',1);
             if($('.navbar-collapse').hasClass('in')){
                 $('.navbar').addClass('navbar-fake-deploy');
                 FillDark();
             }
         }else{
             $('.navbar').addClass('navbar-deploy');
-            if($(document).scrollTop() > navbarTrigger+200){
-                $("#video_layer video").get(0).pause();
+            if($(document).scrollTop() > navbarTrigger+$(window).height()*.5){
+                $("video").get(0).pause();
+                // $("video").css('opacity',.3);
+            }else{
+                $("video").get(0).play();
+                // $("video").css('opacity',1);
             }
         }
         // !Gestion du LOGO
