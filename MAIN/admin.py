@@ -7,16 +7,17 @@ from mezzanine.pages.models import RichTextPage
 from .models import *
 
 HomePage_fieldsets = deepcopy(PageAdmin.fieldsets)
+HomePage_fieldsets[0][1]["fields"].insert(-1, "color")
 HomePage_fieldsets[0][1]["fields"].insert(-1, "caption")
 class HomeCaptionInline(admin.TabularInline):
     model = HomeCaption
-    extra = 4
+    extra = 5
 class HomeVideoInline(admin.TabularInline):
     model = HomeVideo
-    extra = 4
+    extra = 5
 class HomePageAdmin(PageAdmin):
-        inlines = (HomeCaptionInline,HomeVideoInline)
         fieldsets = HomePage_fieldsets
+        inlines = (HomeCaptionInline,HomeVideoInline)
 
 Section_fieldsets = deepcopy(PageAdmin.fieldsets)
 Section_fieldsets[0][1]["fields"].insert(-1, "illustration")

@@ -41,28 +41,30 @@ from colorfield.fields import ColorField
 
 class HomePage(Page, RichText):
     caption = RichTextField()
+    color = ColorField(default='#528DD9')
+
 class HomeVideo(models.Model):
     master = models.ForeignKey("HomePage")
-    title = models.CharField(max_length=255, blank=True, null=False)
+    title = models.CharField(max_length=255, null=False,blank=False)
     # file = models.FileField(upload_to='uploads/videos', blank=False)
-    file = FileField(upload_to=upload_to("MAIN.HomeVideoCaption.video", "video"), max_length=255, null=False, blank=True)
+    file = FileField(upload_to=upload_to("MAIN.HomeVideoCaption.video", "video"), max_length=255, null=False,blank=False)
     illustration_alt = FileField(verbose_name=_("illustration_alt"),
-        upload_to=upload_to("MAIN.HomeVideoCaption.illustration_alt", "illustration_alt"), max_length=255, null=False, blank=True)
-    color = ColorField(null=False, blank=True, default="rgb(114,196,231)")
-    darken_navbar = models.BooleanField(default=False, verbose_name='Assombrir navbar',help_text='Ajouter un fond sombre à la navbar pour qu\'elle ressorte correctement lorsque le fond de la video est clair')
+        upload_to=upload_to("MAIN.HomeVideoCaption.illustration_alt", "illustration_alt"), max_length=255, null=False,blank=False)
+    darken_navbar = models.BooleanField(null=False,blank=False, default=False, verbose_name='Assombrir navbar',help_text='Ajouter un fond sombre à la navbar pour qu\'elle ressorte correctement lorsque le fond de la video est clair')
+
 class HomeCaption(models.Model):
     master = models.ForeignKey("HomePage")
-    title = models.CharField(max_length=255, blank=True, null=True, editable=False)
-    illustration = FileField(verbose_name=_("illustration"),
-        upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "illustration"),
-        format="Image", max_length=255, null=True, blank=True)
-    color = ColorField(null=False, blank=True, default="72C4E7")
+    title = models.CharField(max_length=255, null=False, blank=False)
+    image = FileField(verbose_name=_("Image"),
+        upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "SLIDER HOME"),
+        format="Image", max_length=255)
+    lien = models.URLField(null=False, blank=True)
 
 class Section(Page,RichText):
     illustration = FileField(verbose_name=_("illustrationSection"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Section"),
         format="Image", max_length=255, null=False, blank=True)
-    color = ColorField(null=False, blank=True, default="72C4E7")
+    color = ColorField()
     caption = RichTextField()
 
 class Slot(Page,RichText):
@@ -70,7 +72,7 @@ class Slot(Page,RichText):
     illustration = FileField(verbose_name=_("illustrationSlot"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Slot"),
         format="Image", max_length=255, null=False, blank=True)
-    color = ColorField(null=False, blank=True, default="72C4E7", verbose_name='background color')
+    color = ColorField()
     caption = RichTextField()
 
 class Team(Page):
