@@ -52,8 +52,10 @@
 
 <div id='header'>
     <img src='/static/media/{{ Target.illustration }}' alt='illustration section' />
+    <div id='header_overlay'>
+    </div>
     <divclass='container' style='width:100%; padding-right:0; padding-left:0;' >
-        <div id='caption' class='row' style='margin:20px; background-color:{{ Target.color }}'>
+        <div id='caption' class='row' style='margin:20px; background-color:{{ Target.caption_color }}'>
             <div class=' col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-justify' style='color:{{ Target.text_color }}'>
                 <h3 class='text-center'>{{ Target.sub_title|upper }}</h3>
                 {{ Target.caption|richtext_filters|safe }}

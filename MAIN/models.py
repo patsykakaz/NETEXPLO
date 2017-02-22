@@ -64,8 +64,9 @@ class Section(Page,RichText):
     illustration = FileField(verbose_name=_("illustrationSection"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Section"),
         format="Image", max_length=255, null=False, blank=True)
-    color = ColorField(default='#528DD9')
-    text_color = ColorField(default='#333')
+    color = ColorField(default='#528DD9', help_text='couleur des éléments static de la page (navbar, footer)')
+    caption_color = ColorField(default='#E8ECED', help_text='Couleur de fond du paragraphe introductif de la section')
+    text_color = ColorField(default='#333', help_text='couleur du texte dans le paragraphe')
     sub_title = models.CharField(null=False, blank=True, max_length=255, verbose_name='Sous-titre de la section')
     caption = RichTextField()
 
