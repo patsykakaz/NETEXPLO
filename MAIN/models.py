@@ -66,6 +66,7 @@ class Section(Page,RichText):
         format="Image", max_length=255, null=False, blank=True)
     color = ColorField(default='#528DD9')
     text_color = ColorField(default='#333')
+    sub_title = models.CharField(null=False, blank=True, max_length=255, verbose_name='Sous-titre de la section')
     caption = RichTextField()
 
 class Slot(Page,RichText):

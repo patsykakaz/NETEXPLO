@@ -15,6 +15,12 @@
 }
 #caption{
     padding: 75px 50px;
+    line-height: 24px;
+    font-size: 16px;
+}
+#caption h3{
+    font-size: 28px;
+    margin-bottom: 30px;
 }
 
 
@@ -37,14 +43,22 @@
 @media screen and (max-width: 991px){
     #caption{
         padding: 60px 40px;
+        line-height: 22px;
+        font-size: 14px;
     }
+    #caption h3{
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
     .slot{
         /*min-height: 400px;*/
         padding: 75px 40px;
-        text-align: center;
+        text-align: justify;
     }
     .slot h4{
         text-align: center;
+        font-size: 21px;
     }
     .slot img{
         display: block;
@@ -60,10 +74,20 @@
 @media screen and (max-width: 768px){
     #caption{
         padding: 45px 30px;
-    } 
+        line-height: 20px;
+        font-size: 13px;
+    }
+    #caption h3{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
     .slot{
         /*min-height: 400px;*/
         padding: 50px 30px;
+    }
+    .slot h4{
+        font-size: 18px;
     }
     .slot img{
         display: block;

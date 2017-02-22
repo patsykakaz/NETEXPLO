@@ -23,6 +23,7 @@ Section_fieldsets = deepcopy(PageAdmin.fieldsets)
 Section_fieldsets[0][1]["fields"].insert(-1, "illustration")
 Section_fieldsets[0][1]["fields"].insert(-1, "color")
 Section_fieldsets[0][1]["fields"].insert(-1, "text_color")
+Section_fieldsets[0][1]["fields"].insert(-1, "sub_title")
 Section_fieldsets[0][1]["fields"].insert(-1, "caption")
 class SectionAdmin(PageAdmin):
         fieldsets = Section_fieldsets
