@@ -39,18 +39,20 @@ video{
 }
 
 #main{
+    margin: 20px;
+}
+#main.absolute{
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+#main .slot{
     width: 100%;
     padding: 100px 50px;
     background-color: #edf1f2;
     color: #1d262b;
     letter-spacing: 1.6px;
     line-height: 30px;
-    box-shadow: 0 0 1px 1px rgba(0,0,0,.1);
-}
-#main.absolute{
-    position: absolute;
-    top: 100%;
-    left: 0;
 }
 #main p{
     margin: 30px 0;
@@ -69,12 +71,19 @@ footer{
 
 
 @media screen and (max-width: 991px){
-    #main{
+    #main .slot{
+        padding: 60px;
+        line-height: 28px;
         text-align: justify;
     }
 }
 
 @media screen and (max-width: 768px){
+    #main .slot{
+        padding: 40px;
+        line-height: 23px;
+        text-align: justify;
+    }
     #test video{ 
         top: 0;
         left: -15%;

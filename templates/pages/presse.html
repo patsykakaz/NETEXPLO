@@ -119,7 +119,7 @@
     <div class='slot' style='margin-bottom:0; background-color:{{ Target.caption_color }}'>
         <div id='caption' class='row'>
             <div class='middlize col-md-3 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center'>
-                <img src='{% static "img/utils/pressbook.jpg" %}'  class='img-circle' />
+                <img src='{% static "img/utils/pressbook.jpg" %}' />
             </div>
             <div class='middlize col-md-6 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 text-justify' style='color:{{ Target.text_color }}'>
                 <h3 class='text-center'>
@@ -165,7 +165,7 @@
                                 {{ element.description_from_content|safe }}
                             </div>
                             <div class='text-center'>
-                                <a  style='color: {{ customColor }};' href='{{ element.get_absolute_url }}'>
+                                <a  style='margin-top:10px; color: {{ customColor }};' href='{{ element.get_absolute_url }}'>
                                     <i class='fa fa-lg fa-ellipsis-h'></i>
                                     {% if LANGUAGE_CODE == 'fr' %}
                                         Voir plus 

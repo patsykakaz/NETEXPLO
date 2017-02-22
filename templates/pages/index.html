@@ -7,6 +7,12 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static "css/index.css" %}">
+<style type="text/css">
+    #main .slot{
+        background-color: {{ Home.color_caption }};
+        color: {{ Home.color_caption_text }}
+    }
+</style>
 {% endblock %}
 
 {% block extra_js %}
@@ -42,7 +48,6 @@
 {% block main %}
 
 {% if Home.video %}
-    <div id='xxx'>
     <div id='video_layer'>
         {% if Home.video %}
         <video id="bgvid" playsinline autoplay muted loop poster="{{ MEDIA_URL }}{{ Home.video.illustration_alt }}" id="illustration video alt">
@@ -50,7 +55,6 @@
             <source src="{{ MEDIA_URL }}{{ Home.video.file }}" type="video/mp4">
         </video>
         {% endif %}
-    </div>
     </div>
 {% else %} 
     <div id='carousel_container'>
@@ -87,10 +91,15 @@
     </div>
 {% endif %}
 
-<div id='main' class='container'>
-    <div class='row'>
-        <div class='col-md-10 col-md-offset-1 text-justify'>
-            {{ Home.caption|richtext_filters|safe }}
+<div id='main'>
+    <div class='slot container'>
+        <div class='row'>
+            <div class='col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0 text-justify'>
+                {% if Home.sub_title %}
+                <h3 class='text-center' style='color: {{ customColor }};'>{{ Home.sub_title|upper }}</h3>
+                {% endif %}
+                {{ Home.caption|richtext_filters|safe }}
+            </div>
         </div>
     </div>
 </div>

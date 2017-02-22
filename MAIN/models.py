@@ -41,7 +41,9 @@ from colorfield.fields import ColorField
 
 class HomePage(Page, RichText):
     sub_title = models.CharField(null=False, blank=True, max_length=255, verbose_name='Sous-titre de la section')
-    color = ColorField(default='#528DD9')
+    color = ColorField(default='#528DD9', help_text='Couleur identifiante de la page')
+    color_caption = ColorField(default='#E8ECED', help_text='couleur de fond du paragraphe de la home')
+    color_caption_text = ColorField(default='#333', help_text='couleur du texte du paragraphe de la home')
     slider_timer = models.IntegerField(default=3000, help_text='intervalle, en ms, du sliders')
     caption = RichTextField()
 
