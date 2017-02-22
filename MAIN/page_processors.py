@@ -34,8 +34,8 @@ def processor_section(request, page):
 def processor_section(request, page):
     target = Section.objects.get(pk=page.pk)
     customColor = target.color
-    sponsors_A = Sponsor.objects.filter(type_sponsor="A")
-    sponsors_B = Sponsor.objects.filter(type_sponsor="B")
+    sponsors_A = Sponsor.objects.filter(type_sponsor="Partenaire")
+    sponsors_B = Sponsor.objects.filter(type_sponsor="Entreprise adherente")
     return locals()
 
 

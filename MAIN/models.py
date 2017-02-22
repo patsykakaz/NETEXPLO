@@ -128,7 +128,7 @@ class Sponsor(Page):
         upload_to=upload_to("MAIN.Sponsor.logo", "logo"),
         format="Image", max_length=255, null=False, blank=False)
     type_choices = (
-        ("A",'partenaire'),
+        ("A",'Partenaire'),
         ("B",'Entreprise adherente'),
     )
     type_sponsor = models.CharField(max_length=200, 
