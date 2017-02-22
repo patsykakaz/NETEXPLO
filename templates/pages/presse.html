@@ -6,7 +6,7 @@
 
 {% block extra_css %}
 {# <link rel="stylesheet" href="{% static "css/section.css" %}"> #}
-<link rel="stylesheet" href="{% static "css/test.css" %}">
+<link rel="stylesheet" href="{% static "css/presse.css" %}">
 <style type="text/css">
     #cat_contact{
         {% if LANGUAGE_CODE == 'fr' %}
@@ -202,7 +202,7 @@
                                 {% endif %}
                                 </a>
                             </div>
-                            <div class='text-center'>
+                            <div class='mediaAsset_caption text-center'>
                                 {{ element.title }}
                                 <a style='position:relative; left:5px; color:{{ PressFiles_container.color }};' href='{{ element.file.url }}' target='blank'>
                                     <span class="fa-stack fa-lg">
@@ -229,7 +229,7 @@
                                 {% endif %}
                                 </a>
                             </div>
-                            <div class='text-center'>
+                            <div class='mediaAsset_caption text-center'>
                                 {{ element.title }}
                                 <a style='position:relative; left:5px; color:{{ PressFiles_container.color }};' href='{{ element.file.url }}' target='blank'>
                                     <span class="fa-stack fa-lg">
@@ -258,7 +258,7 @@
                                 {% endif %}
                                 </a>
                             </div>
-                            <div class='text-center'>
+                            <div class='mediaAsset_caption text-center'>
                                 {{ element.title }}
                                 <a style='position:relative; left:5px; color:{{ PressFiles_container.color }};' href='{{ element.file.url }}' target='blank'>
                                     <span class="fa-stack fa-lg">

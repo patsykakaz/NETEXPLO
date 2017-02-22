@@ -9,7 +9,7 @@ class TranslatedHomePage(TranslationOptions):
     fields = ('caption',)
 
 class TranslatedSection(TranslationOptions):
-    fields = ('caption','sub_title',)
+    fields = ('caption','sub_title')
 
 class TranslatedSlot(TranslationOptions):
     fields = ('caption',)
