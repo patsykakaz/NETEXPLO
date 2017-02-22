@@ -7,14 +7,13 @@
 #header{
     overflow: hidden;
 }
-#header img{
+#illustration_container{
+    position: relative;
+}
+#illustration{
     position: relative;
     min-width: 100%;
     max-width: 140%;
-}
-#main{
-    position: relative;
-    padding: 0 20px;
 }
 #illustration_overlay{
     position: absolute;
@@ -35,7 +34,10 @@
     margin-bottom: 30px;
 }
 
-
+#main{
+    position: relative;
+    padding: 0 20px;
+}
 .slot{
     width: 100%;
     min-height: 400px;
