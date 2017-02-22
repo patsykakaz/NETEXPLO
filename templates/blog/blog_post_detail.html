@@ -1,5 +1,6 @@
 {% extends "blog/blog_post_list.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags %}
+{# {% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags %} #}
+{% load i18n static pages_tags mezzanine_tags blog_tags keyword_tags %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -12,122 +13,216 @@
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "css/section.css" %}">
+<style type="text/css">
+    a, a:hover, a:visited, a:active{
+        text-decoration: none;
+        color: {{ customColor }};
+    }
+    #header h3{
+        display: inline-block;
+        position: relative;
+        z-index: 99;
+        top: 47%;
+        max-width: 80%;
+        padding: 30px;
+        /*border-radius: 6px;*/
+        background-color: rgba(249,249,249,.85);
+        color: rgba(0,0,0,.3);
+        box-shadow: 0 0 1px 2px rgba(200,200,200,.1);
+        color: {{ customColor }};
+    }
+    #main{
+        position: relative;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        line-height: 24px;
+    }
+
+    @media screen and (max-width: 991px){
+        #header h3{
+            font-size: 24px;
+            padding: 24px;
+        }
+        #main{
+            position: relative;
+            margin-top: 45px;
+            margin-bottom: 45px;
+            line-height: 22px;
+        }
+    }
+    @media screen and (max-width: 768px){
+        #header h3{
+            font-size: 18px;
+            padding: 16px;
+        }
+        #main{
+            position: relative;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            line-height: 20px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#illustration_container').css('max-height',$(window).height());
+        if($('#illustration').width()>$(window).width()){
+            $('#illustration').css('right',($('#illustration').width()-$(window).width())/2);
+        }else{
+            $('#illustration').css('right',0);
+        }
+        if($('#illustration').height()>$(window).height()){
+            $('#illustration').css('bottom',($('#illustration').height()-$(window).height())/2);
+        }else{
+            $('#illustration').css('bottom',0);
+        }
+        if($(window).width()>990){
+            $('.middlize').each(function(){
+                referent = $(this).parent().parent();
+                refH = referent.height();
+                // console.log(target.length);
+                // console.log(refH);
+                x = (refH - $(this).height())/2;
+                $(this).css('margin-top',x);
+            });
+        }else{
+            $('.middlize').css('margin-top',0);
+        }
+    });
+    $(window).resize(function(){
+        $('#illustration_container').css('max-height',$(window).height());
+        if($('#illustration').width()>$(window).width()){
+            $('#illustration').css('right',($('#illustration').width()-$(window).width())/2);
+        }else{
+            $('#illustration').css('right',0);
+        }
+        if($('#illustration').height()>$(window).height()){
+            $('#illustration').css('bottom',($('#illustration').height()-$(window).height())/2);
+        }else{
+            $('#illustration').css('bottom',0);
+        }
+        if($(window).width()>990){
+            $('.middlize').each(function(){
+                referent = $(this).parent().parent();
+                refH = referent.height();
+                // console.log(target.length);
+                // console.log(refH);
+                x = (refH - $(this).height())/2;
+                $(this).css('margin-top',x);
+            });
+        }else{
+            $('.middlize').css('margin-top',0);
+        }
+    });
+</script>
+{% endblock %}
+
+
 {% block title %}
 {% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
 {% endblock %}
 
-{% block breadcrumb_menu %}
-{{ block.super }}
-<li class="active">{{ blog_post.title }}</li>
-{% endblock %}
+{# {% block breadcrumb_menu %} #}
+{# {{ block.super }} #}
+{# <li class="active">{{ blog_post.title }}</li> #}
+{# {% endblock %} #}
 
 {% block main %}
 
-{% block blog_post_detail_postedby %}
-{% editable blog_post.publish_date %}
-<h6 class="post-meta">
-    {% trans "Posted by" %}:
-    {% with blog_post.user as author %}
-    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
-    {% endwith %}
-    {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-</h6>
-{% endeditable %}
-{% endblock %}
-{% block blog_post_detail_commentlink %}
-<p>
-    {% if blog_post.allow_comments %}
-        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-            (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
-                data-disqus-identifier="{% disqus_id_for blog_post %}">{% spaceless %}
-                {% trans "Comments" %}
-            {% endspaceless %}</a>)
-        {% else %}(<a href="#comments">{% spaceless %}
-            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-            {% endspaceless %}</a>)
-        {% endif %}
-    {% endif %}
-</p>
-{% endblock %}
+    {# {% block blog_post_detail_postedby %} #}
+    {# {% editable blog_post.publish_date %} #}
+    {# <h6 class="post-meta"> #}
+        {# {% trans "Posted by" %}: #}
+        {# {% with blog_post.user as author %} #}
+        {# <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a> #}
+        {# {% endwith %} #}
+        {# {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %} #}
+    {# </h6> #}
+    {# {% endeditable %} #}
+    {# {% endblock %} #}
 
-{% block blog_post_detail_featured_image %}
-{% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-<p><img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p>
-{% endif %}
-{% endblock %}
+<div id='header'>
+    <div id='illustration_container'>
+        <img id='illustration' src='{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 0 1600 %}' alt='illustration section' />
+        <div id='illustration_overlay' class='text-center'>
+            <h3 class='text-center'>{{ blog_post.title|upper }}</h3>
+        </div>
+    </div>
+    {# <div class='container' style='width:100%; padding-right:0; padding-left:0;' > #}
+        {# <div id='caption' class='row' style='margin:20px; background-color:{{ Target.caption_color }}'> #}
+            {# <div class=' col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-justify' style='color:{{ Target.text_color }}'> #}
+                {# <h3 class='text-center'>{{ blog_post.title|upper }}</h3> #}
+            {# </div> #}
+        {# </div> #}
+    {# </div> #}
+</div>
 
-{% if settings.COMMENTS_DISQUS_SHORTNAME %}
-{% include "generic/includes/disqus_counts.html" %}
-{% endif %}
+    {# {% block blog_post_detail_featured_image %} #}
+    {# {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %} #}
+    {# <p><img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p> #}
+    {# {% endif %} #}
+    {# {% endblock %} #}
 
-{% block blog_post_detail_content %}
-{% editable blog_post.content %}
-{{ blog_post.content|richtext_filters|safe }}
-{% endeditable %}
-{% endblock %}
 
-{% block blog_post_detail_keywords %}
-{% keywords_for blog_post as tags %}
-{% if tags %}
-{% spaceless %}
-<ul class="list-inline tags">
-    <li>{% trans "Tags" %}:</li>
-    {% for tag in tags %}
-    <li><a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}</li>
-    {% endfor %}
-</ul>
-{% endspaceless %}
-{% endif %}
-{% endblock %}
-
-{% block blog_post_detail_rating %}
-<div class="panel panel-default rating">
-    <div class="panel-body">
-    {% rating_for blog_post %}
+<div id='main'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-justify'>
+                {% block blog_post_detail_content %}
+                {% editable blog_post.content %}
+                {{ blog_post.content|richtext_filters|safe }}
+                {% endeditable %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class='row'>
+            {% block blog_post_previous_next %}
+            <ul class="pager">
+                {% with blog_post.get_previous_by_publish_date as previous %}
+                    {% if previous %}
+                    <li class="previous">
+                        <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+                    </li>
+                    {% endif %}
+                {% endwith %}
+                {% with blog_post.get_next_by_publish_date as next %}
+                    {% if next %}
+                    <li class="next">
+                        <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+                    </li>
+                    {% endif %}
+                {% endwith %}
+            </ul>
+            {% endblock %}
+        </div>
     </div>
 </div>
-{% endblock %}
 
-{% block blog_post_detail_sharebuttons %}
-{% set_short_url_for blog_post %}
-<a class="btn btn-sm share-twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ blog_post.short_url|urlencode }}&amp;text={{ blog_post.title|urlencode }}">{% trans "Share on Twitter" %}</a>
-<a class="btn btn-sm share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">{% trans "Share on Facebook" %}</a>
-{% endblock %}
 
-{% block blog_post_previous_next %}
-<ul class="pager">
-{% with blog_post.get_previous_by_publish_date as previous %}
-{% if previous %}
-<li class="previous">
-    <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
-</li>
-{% endif %}
-{% endwith %}
-{% with blog_post.get_next_by_publish_date as next %}
-{% if next %}
-<li class="next">
-    <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
-</li>
-{% endif %}
-{% endwith %}
-</ul>
-{% endblock %}
+    {# {% block blog_post_detail_sharebuttons %} #}
+    {# {% set_short_url_for blog_post %} #}
+    {# <a class="btn btn-sm share-twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ blog_post.short_url|urlencode }}&amp;text={{ blog_post.title|urlencode }}">{% trans "Share on Twitter" %}</a> #}
+    {# <a class="btn btn-sm share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">{% trans "Share on Facebook" %}</a> #}
+    {# {% endblock %} #}
 
-{% block blog_post_detail_related_posts %}
-{% if related_posts %}
-<div id="related-posts">
-<h3>{% trans 'Related posts' %}</h3>
-<ul class="list-unstyled">
-{% for post in related_posts %}
-     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
-</div>
-{% endif %}
-{% endblock %}
 
-{% block blog_post_detail_comments %}
-{% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
-{% endblock %}
+    {% block blog_post_detail_related_posts %}
+    {% if related_posts %}
+    <div id="related-posts">
+    <h3>{% trans 'Related posts' %}</h3>
+    <ul class="list-unstyled">
+    {% for post in related_posts %}
+         <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+    {% endblock %}
+
 
 {% endblock %}

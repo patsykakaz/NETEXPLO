@@ -40,12 +40,12 @@
         if($('#illustration').width()>$(window).width()){
             $('#illustration').css('right',($('#illustration').width()-$(window).width())/2);
         }else{
-            $('#illustration').css('bottom',0);
+            $('#illustration').css('right',0);
         }
         if($('#illustration').height()>$(window).height()){
             $('#illustration').css('bottom',($('#illustration').height()-$(window).height())/2);
         }else{
-            $('#illustration').css('right',0);
+            $('#illustration').css('bottom',0);
         }
         if($(window).width()>990){
             $('.middlize').each(function(){
@@ -77,7 +77,7 @@
     </div>
     <div class='container' style='width:100%; padding-right:0; padding-left:0;' >
         <div id='caption' class='row' style='margin:20px; background-color:{{ Target.caption_color }}'>
-            <div class=' col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-justify' style='color:{{ Target.text_color }}'>
+            <div class='col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-justify' style='color:{{ Target.text_color }}'>
                 <h3 class='text-center'>{{ Target.sub_title|upper }}</h3>
                 {{ Target.caption|richtext_filters|safe }}
             </div>
