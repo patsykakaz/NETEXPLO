@@ -20,12 +20,15 @@ class TranslatedTeam(TranslationOptions):
 class TranslatedNetwork(TranslationOptions):
     fields = ('poste','university','ville','pays')
 
+
+
 translator.register(HomePage, TranslatedHomePage)
 translator.register(Section, TranslatedSection)
 translator.register(Slot, TranslatedSlot)
 translator.register(Team, TranslatedTeam)
 translator.register(Network, TranslatedNetwork)
 translator.register(Sponsor)
+translator.register(PressFiles)
 
 
 

@@ -47,8 +47,21 @@ class SponsorAdmin(PageAdmin):
         fieldsets = Sponsor_fieldsets
 
 
+Press_fieldsets = deepcopy(PageAdmin.fieldsets)
+Press_fieldsets[0][1]["fields"].insert(-1, "caption_color")
+Press_fieldsets[0][1]["fields"].insert(-1, "color")
+class MediaAssetInline(admin.TabularInline):
+    model = MediaAsset
+    extra = 12
+class PressFilesAdmin(PageAdmin):
+        fieldsets = Press_fieldsets
+        inlines = (MediaAssetInline,)
+
+
+
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Slot, SlotAdmin)
 admin.site.register(Sponsor, SponsorAdmin)
+admin.site.register(PressFiles, PressFilesAdmin)
 

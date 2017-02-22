@@ -90,7 +90,8 @@ footer .separator{
         opacity: 1;
     }
     #SoMe{
-        margin-bottom: 30px;
+        margin: auto;
+        margin-bottom: 0;
         bottom: 0;
         text-align: center;
         opacity: 1;
@@ -106,7 +107,7 @@ footer .separator{
         font-size: 12px;
     }
     footer{
-        font-size: 10px;
+        font-size: 12px;
     }
 }
 
@@ -246,6 +247,9 @@ footer .separator{
     margin: 0 20px;
 }.list-unstyled:first-child{
     margin-left: 0;
+}
+.img-thumbnail{
+    border-radius: 0;
 }
 
 @media screen and (max-width: 768px){

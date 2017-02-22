@@ -3,7 +3,25 @@
  * CSS DRAFT
  * ===============================================*/
 
+h3{
+    margin-top: 0;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+h6{
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    letter-spacing: 1.4px;
+}
+a, a:hover, a:visited, a:active{
+    text-decoration: none;
+}
+
+
 #header{
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
     overflow: hidden;
 }
 #illustration_container{
@@ -36,15 +54,93 @@
     /*padding: 50px;*/
 }
 #caption h3{
-    text-transform: uppercase;
 }
 #caption img{
     max-width: 100%;
-    max-height: 200px;
+    max-height: 300px;
 }
 
 
+#main{
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    overflow: hidden;
+}
+.slot{
+    margin: 20px;
+    padding: 100px 0;
+}
 
+#blogSpace{
+
+}#blogSpace img{
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+.news_box{
+    margin-bottom: 20px;
+}
+
+#mediaAssets{
+}
+#mediaAssets h5{
+    margin: 20px 0;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    text-transform: uppercase;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+.mediaAsset_box{
+    margin-bottom: 20px;
+    text-align: center;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,.25);
+}.mediaAsset_box:hover{
+    box-shadow: 0 0 2px 1px rgba(0,0,0,.15);
+}
+.mediaAsset_box a{
+    display: block;
+}
+.mediaAsset_box a img{
+    max-width: 100%;
+}
+
+
+@media screen and (max-width: 991px){
+    h3{
+        margin-bottom: 40px;
+    }
+    #caption img{
+        margin-bottom: 50px;
+    }
+    .slot{
+        padding: 80px 40px;
+    }
+    #mediaAssets h5{
+        margin-top: 40px;
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 768px){
+    h3{
+        margin-bottom: 30px;
+    }
+    #caption img{
+        margin-bottom: 40px;
+    }
+    .slot{
+        padding: 70px 30px;
+    }
+    #mediaAssets h5{
+        margin-top: 30px;
+        font-size: 16px;
+    }
+}
 
 
 

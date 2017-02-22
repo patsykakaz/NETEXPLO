@@ -145,6 +145,27 @@ class Sponsor(Page):
         super(Sponsor, self).save(*args, **kwargs)
 
 
+class PressFiles(Page):
+    caption_color = ColorField(default='#edf1f2', help_text='Couleur de fond du slot MEDIA ASSETS')
+    color = ColorField(default='#333', help_text='couleur du texte du slot MEDIA ASSETS')
+    def save(self, *args, **kwargs):
+        self.in_menus = []
+        super(PressFiles, self).save(*args, **kwargs)
+
+class MediaAsset(models.Model):
+    type_choices = (
+        ("Logo",'Logo'),
+        ("Video",'Video'),
+        ("Photo",'Photo'),
+    )
+    type_asset = models.CharField(max_length=200, 
+                    choices=type_choices, null=False, blank=False, verbose_name='Type de fichier')
+    master = models.ForeignKey("PressFiles")
+    title = models.CharField(max_length=255, null=False, blank=False)
+    file = models.FileField(upload_to='press/', null=False, blank=False)
+    image_file = FileField(verbose_name=_("image representation"),
+        upload_to=upload_to("MAIN.MediaAsset.image_file", "image_file"),
+        format="Image", max_length=255, null=False, blank=True)
 
 
 

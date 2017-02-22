@@ -7,6 +7,7 @@ secure_random = random.SystemRandom()
 from django.db.models import Q
 # from django.http import HttpResponse, HttpResponseRedirect
 from mezzanine.pages.page_processors import processor_for
+from mezzanine.blog.models import *
 from MAIN.models import *
 
 @processor_for('/')
@@ -41,7 +42,12 @@ def processor_section(request, page):
 @processor_for("presse")
 def processor_section(request, page):
     target = Section.objects.get(pk=page.pk)
+    PressFiles_container = PressFiles.objects.last()
     customColor = target.color
+    blogPosts = BlogPost.objects.all()[:12]
+    M_A_logo = MediaAsset.objects.filter(type_asset='Logo')
+    M_A_video  = MediaAsset.objects.filter(type_asset='Video')
+    M_A_photo  = MediaAsset.objects.filter(type_asset='Photo')
     # sponsors_A = Sponsor.objects.filter(type_sponsor="A")
     # sponsors_B = Sponsor.objects.filter(type_sponsor="B")
     return locals()
