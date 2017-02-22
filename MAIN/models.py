@@ -40,8 +40,10 @@ from colorfield.fields import ColorField
 # ASSETS
 
 class HomePage(Page, RichText):
-    caption = RichTextField()
+    sub_title = models.CharField(null=False, blank=True, max_length=255, verbose_name='Sous-titre de la section')
     color = ColorField(default='#528DD9')
+    slider_timer = models.IntegerField(default=3000, help_text='intervalle, en ms, du sliders')
+    caption = RichTextField()
 
 class HomeVideo(models.Model):
     master = models.ForeignKey("HomePage")

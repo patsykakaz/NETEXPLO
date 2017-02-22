@@ -256,6 +256,7 @@ footer .separator{
     #i18n{}
     #i18n .form-control{
         height: 20px;
+        padding: 2px;
         font-size: 10px;
     }
     .navbar-fake-deploy #nav-container{
