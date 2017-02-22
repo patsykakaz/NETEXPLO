@@ -1,11 +1,48 @@
 {% extends "base.html" %}
 {% load i18n static pages_tags mezzanine_tags blog_tags keyword_tags %}
 
+{% block meta_keywords %}{% endblock %}
+{% block meta_description %}{% endblock %}
+
 {% block extra_css %}
 {# <link rel="stylesheet" href="{% static "css/test.css" %}"> #}
 {% endblock %}
 
 {% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#header img').css('max-height',$(window).height());
+        if($(window).width()>990){
+            $('.middlize').each(function(){
+                referent = $(this).parent().parent();
+                refH = referent.height();
+                // console.log(target.length);
+                // console.log(refH);
+                x = (refH - $(this).height())/2;
+                console.log(x);
+                $(this).css('margin-top',x);
+            });
+        }else{
+            $('.middlize').css('margin-top',0);
+        }
+    });
+    $(window).resize(function(){
+        $('#header img').css('max-height',$(window).height());
+        if($(window).width()>990){
+            $('.middlize').each(function(){
+                referent = $(this).parent().parent();
+                refH = referent.height();
+                // console.log(target.length);
+                // console.log(refH);
+                x = (refH - $(this).height())/2;
+                console.log(x);
+                $(this).css('margin-top',x);
+            });
+        }else{
+            $('.middlize').css('margin-top',0);
+        }
+    });
+</script>
 {% endblock %}
 
 {% block meta_title %}{% endblock %}
@@ -14,14 +51,39 @@
 {% block main %}
 
 <div id='header'>
-    <img src='' alt='illustration section' />
-</div>
-<div id='main' class='container'>
-    <div class='row'>
-        <div class='col-md-10 col-md-offset-1'>
-            {{ Home.caption|richtext_filters|safe }}
+    <img src='/static/media/{{ Target.illustration }}' alt='illustration section' />
+    <divclass='container' style='width:100%; padding-right:0; padding-left:0;' >
+        <div id='caption' class='row' style='margin:20px; background-color:{{ Target.color }}'>
+            <div class=' col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-justify' style='color:{{ Target.text_color }}'>
+                {{ Target.caption|richtext_filters|safe }}
+            </div>
         </div>
     </div>
+</div>
+<div id='main'>
+    {% for element in Target.slots %}
+        <div class='slot container' {% if element.color %}style='background:{{ element.color }}'{% endif %}>
+            <div class='row' style='color:{{ element.text_color }}'>
+                {% if element.pull_image_left %}
+                    <div class='middlize col-md-3 col-md-offset-1'>
+                        <img class='img-circle left' src='{{ MEDIA_URL }}{% thumbnail element.illustration 400 400 %}'>
+                    </div>
+                    <div class='middlize col-md-6 col-md-offset-1'>
+                        <h4>{{ element.title }}</h4>
+                        {{ element.caption|richtext_filters|safe }}
+                    </div>
+                {% else %}
+                    <div class='middlize col-md-6 col-md-offset-1'>
+                        <h4>{{ element.title }}</h4>
+                        {{ element.caption|richtext_filters|safe }}
+                    </div>
+                    <div class='middlize col-md-3 col-md-offset-1'>
+                        <img class='img-circle right' src='{{ MEDIA_URL }}{% thumbnail element.illustration 400 400 %}'>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
 </div>
 
 {% endblock %}

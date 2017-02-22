@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load i18n static pages_tags mezzanine_tags blog_tags keyword_tags %}
 
+{% block meta_keywords %}NETEXPLO{% endblock %}
+{% block meta_description %}OBSERVATOIRE{% endblock %}
+
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static "css/index.css" %}">
 {% endblock %}
@@ -8,7 +12,22 @@
 {% block extra_js %}
 <script type="text/javascript">
     $(document).ready(function(){
-        $('footer').css('top',$(window).height()+$('#main').outerHeight());
+        $('#carousel').css('max-height',$(window).height());
+        if($(window).width()>991 && $('#main.absolute').length){
+            $('footer').css('top',$(window).height()+$('#main').outerHeight());
+        }
+        $('.carousel').carousel({
+            interval: 5000, 
+            pause: null, 
+            wrap: true, 
+            keyboard: true, 
+        })
+    });
+    $(window).resize(function(){
+        $('#carousel').css('max-height',$(window).height());
+        if($(window).width()>991 && $('#main.absolute').length){
+            $('footer').css('top',$(window).height()+$('#main').outerHeight());
+        }
     });
 </script>
 {% endblock %}
@@ -33,8 +52,9 @@
         {% endif %}
     </div>
     </div>
-{% else %}
-    <div id="carousel" class="carousel slide" data-ride="carousel">
+{% else %} 
+    <div id='carousel_container'>
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <!-- Indicators -->
         {# <ol class="carousel-indicators"> #}
             {# {% for element in HomeX_data.inlines %} #}
@@ -61,6 +81,9 @@
             {# <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> #}
             {# <span class="sr-only">Next</span> #}
         {# </a> #}
+        <div id='carousel_overlay'>
+        </div>
+    </div>
     </div>
 {% endif %}
 

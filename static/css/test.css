@@ -3,8 +3,76 @@
  * Effect 7
  * ===============================================*/
 
-body{
-    min-height: 1000px;
-    margin: 0;
-    /*background: #000; */
+
+#header{
+    overflow: hidden;
+}
+#header img{
+    min-width: 100%;
+}
+#main{
+    padding: 0 20px;
+}
+#caption{
+    padding: 75px 50px;
+}
+
+
+.slot{
+    width: 100%;
+    min-height: 400px;
+    margin: 0 0 20px 0;
+    padding: 100px 0;
+}
+.slot h4{
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+.slot img{
+    max-width: 100%;
+}
+
+
+@media screen and (max-width: 991px){
+    #caption{
+        padding: 60px 40px;
+    }
+    .slot{
+        /*min-height: 400px;*/
+        padding: 75px 40px;
+        text-align: center;
+    }
+    .slot h4{
+        text-align: center;
+    }
+    .slot img{
+        display: block;
+        width: 50%;
+        margin: auto;
+        max-width: 300px;
+    }.slot img.left{
+        margin-bottom: 60px;
+    }.slot img.right{
+        margin-top: 60px;
+    }
+}
+@media screen and (max-width: 768px){
+    #caption{
+        padding: 45px 30px;
+    } 
+    .slot{
+        /*min-height: 400px;*/
+        padding: 50px 30px;
+    }
+    .slot img{
+        display: block;
+        width: 50%;
+        margin: auto;
+        max-width: 200px;
+    }.slot img.left{
+        margin-bottom: 40px;
+    }.slot img.right{
+        margin-top: 40px;
+    }
 }

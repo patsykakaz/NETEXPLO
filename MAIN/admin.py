@@ -22,6 +22,7 @@ class HomePageAdmin(PageAdmin):
 Section_fieldsets = deepcopy(PageAdmin.fieldsets)
 Section_fieldsets[0][1]["fields"].insert(-1, "illustration")
 Section_fieldsets[0][1]["fields"].insert(-1, "color")
+Section_fieldsets[0][1]["fields"].insert(-1, "text_color")
 Section_fieldsets[0][1]["fields"].insert(-1, "caption")
 class SectionAdmin(PageAdmin):
         fieldsets = Section_fieldsets
@@ -30,12 +31,22 @@ Slot_fieldsets = deepcopy(PageAdmin.fieldsets)
 Slot_fieldsets[0][1]["fields"].insert(-1, "master")
 Slot_fieldsets[0][1]["fields"].insert(-1, "illustration")
 Slot_fieldsets[0][1]["fields"].insert(-1, "color")
+Slot_fieldsets[0][1]["fields"].insert(-1, "text_color")
+Slot_fieldsets[0][1]["fields"].insert(-1, "pull_image_left")
 Slot_fieldsets[0][1]["fields"].insert(-1, "caption")
 class SlotAdmin(PageAdmin):
         fieldsets = Slot_fieldsets
+
+Sponsor_fieldsets = deepcopy(PageAdmin.fieldsets)
+Sponsor_fieldsets[0][1]["fields"].insert(-1, "logo")
+Sponsor_fieldsets[0][1]["fields"].insert(-1, "type_sponsor")
+Sponsor_fieldsets[0][1]["fields"].insert(-1, "lien")
+class SponsorAdmin(PageAdmin):
+        fieldsets = Sponsor_fieldsets
 
 
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Slot, SlotAdmin)
+admin.site.register(Sponsor, SponsorAdmin)
 

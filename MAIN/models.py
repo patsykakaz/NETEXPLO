@@ -64,7 +64,8 @@ class Section(Page,RichText):
     illustration = FileField(verbose_name=_("illustrationSection"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Section"),
         format="Image", max_length=255, null=False, blank=True)
-    color = ColorField()
+    color = ColorField(default='#528DD9')
+    text_color = ColorField(default='#333')
     caption = RichTextField()
 
 class Slot(Page,RichText):
@@ -72,8 +73,20 @@ class Slot(Page,RichText):
     illustration = FileField(verbose_name=_("illustrationSlot"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Slot"),
         format="Image", max_length=255, null=False, blank=True)
-    color = ColorField()
+    color = ColorField(default='#FFFFFF')
+    text_color = ColorField(default='#333')
+    pull_image_left = models.BooleanField(default=True, verbose_name='Placer l\'image à gauche', help_text='Décochez pour placer l\'image à droite')
     caption = RichTextField()
+
+    def save(self, *args, **kwargs):
+        self.in_menus = []
+        if not self.parent:
+            try: 
+                self.parent = Page.objects.get(pk=self.master.pk)
+            except: 
+                pass
+        super(Slot, self).save(*args, **kwargs)
+
 
 class Team(Page):
     prenom = models.CharField(max_length=255,null=False,blank=False)
@@ -83,12 +96,52 @@ class Team(Page):
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Team"),
         format="Image", max_length=255, null=False, blank=True)
 
+    def save(self, *args, **kwargs):
+        self.in_menus = []
+        if not self.parent:
+            try: 
+                self.parent = Page.objects.get(title="TEAM")
+            except: 
+                pass
+        super(Team, self).save(*args, **kwargs)
+
 class Network(Page):
     prenom = models.CharField(max_length=255,null=False,blank=False)
     poste = models.CharField(max_length=255,null=False,blank=False)
     university = models.CharField(max_length=255,null=False,blank=False)
     ville = models.CharField(max_length=255,null=False,blank=False)
     pays = models.CharField(max_length=255,null=False,blank=False)
+
+    def save(self, *args, **kwargs):
+        self.in_menus = []
+        if not self.parent:
+            try: 
+                self.parent = Page.objects.get(title='NETWORK')
+            except: 
+                pass
+        super(Network, self).save(*args, **kwargs)
+
+class Sponsor(Page):
+    logo = FileField(verbose_name=_("Logo"),
+        upload_to=upload_to("MAIN.Sponsor.logo", "logo"),
+        format="Image", max_length=255, null=False, blank=False)
+    type_choices = (
+        ('partenaire', 1),
+        ('Entreprise adherente', 2),
+    )
+    type_sponsor = models.CharField(max_length=200, 
+                    choices=type_choices, null=False, blank=False, verbose_name='Type de partenaire')
+    lien = models.URLField(null=False, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.in_menus = []
+        if not self.parent:
+            try: 
+                self.parent = Page.objects.get(title='SPONSORS')
+            except: 
+                pass
+        super(Sponsor, self).save(*args, **kwargs)
+
 
 
 

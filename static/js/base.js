@@ -28,6 +28,7 @@ $(document).ready(function(){
 
 $(window).resize(function(){
     FullScreen();
+    navbarTrigger = $(window).width()*.1;
 });
 
 function NavBar(){

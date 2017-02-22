@@ -4,11 +4,20 @@
 ==========================================*/
 
 body{
+    max-width: 100%;
+    margin: 0;
     /*margin-top: 20px;*/
     font-family: 'intelolight';
     letter-spacing: 1.4px;
 }
 
+._NET_, ._EXPLO_, ._OBS_{
+    -webkit-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+    -moz-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+    -ms-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+    -o-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+    transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
+}
 
 
 #main{
@@ -27,7 +36,7 @@ footer{
     /*margin-top: 100px;*/
     padding: 80px 40px;
     border-top: 1px solid rgba(0,0,0,.1);
-    background-color: rgb(228,224,222);
+    background-color: rgb(249,249,249);
     color: #1d262b;
     text-transform: uppercase;
     text-decoration: underline;
@@ -132,7 +141,12 @@ footer .separator{
     border: none;
     font-size: 15px;
     /*font-family: 'intelosemibold';*/
+    -moz-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
 }.navbar.navbar-deploy{
+    background-color: rgb(255,255,255);
     box-shadow: 0 0 1px 1px rgba(0,0,0,.15);
 }
 #nav-container{
@@ -146,10 +160,10 @@ footer .separator{
 .navbar-deploy #nav-container{
     width: 100%;
     padding: 5px 4% 15px 4%;
-    background-color: rgb(255,255,255);
 }
 .navbar-brand{
     height: 75px;
+    margin-top: 20px;
     padding: 0 15px;
     -moz-transition: all .45s ease-in-out;
     -webkit-transition: all .45s ease-in-out;
@@ -159,22 +173,14 @@ footer .separator{
     height: 70px;
 }
 #logo{
-    height: 65px;
+    height: 50px;
     margin-top: 10px;
     -moz-transition: all .45s ease-in-out;
     -webkit-transition: all .45s ease-in-out;
     -o-transition: all .45s ease-in-out;
     transition: all .45s ease-in-out;
 }
-#SVG{
-}
-._NET_, ._EXPLO_, ._OBS_{
-    -webkit-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
-    -moz-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
-    -ms-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
-    -o-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
-    transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;
-}
+
 .navbar-deploy #logo{
     height: 55px;
     margin-bottom: 5px;
