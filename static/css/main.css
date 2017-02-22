@@ -133,6 +133,23 @@ footer .separator{
         BOOTSTRAP OVERRIDES
 ==========================================*/
 
+#i18n{
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    max-width: 80px;
+    overflow: hidden;
+    display: inline-block;
+}
+#i18n .form-control{
+    height: 27px;
+    background-color: #555;
+    border-radius: 0;
+    border: none;
+    color: #FFFFFF;
+    font-size: 12px;
+}
 
 .navbar{
     padding: 0;
@@ -232,6 +249,10 @@ footer .separator{
 }
 
 @media screen and (max-width: 768px){
+    #i18n{}
+    #i18n .form-control{
+        font-size: 9px;
+    }
     .navbar-fake-deploy #nav-container{
         width: 100%;
         padding: 5px 4% 15px 4%;

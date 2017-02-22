@@ -99,7 +99,9 @@
 </head>
 
 <body id="{% block body_id %}body{% endblock %}">
-
+<div id='i18n'>
+    {% include "includes/language_selector.html" %}
+</div>
 <div class="navbar navbar-fixed-top {% if darken_navbar %}dark{% endif %}" role="navigation">
 <div id='nav-container' class="container">
     <div class="navbar-header">

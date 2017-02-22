@@ -9,6 +9,7 @@
 }
 #illustration_container{
     position: relative;
+    overflow: hidden;
 }
 #illustration{
     position: relative;
