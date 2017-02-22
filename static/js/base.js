@@ -28,7 +28,11 @@ $(document).ready(function(){
 
 $(window).resize(function(){
     FullScreen();
-    navbarTrigger = $(window).width()*.1;
+    if($(window).width()<768){
+        navbarTrigger = 60;
+    }else{
+        navbarTrigger = $(window).width()*.1;
+    }
 });
 
 function NavBar(){
@@ -42,7 +46,11 @@ function FullScreen(){
 
 
 // NAVBAR FOLD && UNFOLD
-    navbarTrigger = 120;
+    if($(window).width()<768){
+        navbarTrigger = 60;
+    }else{
+        navbarTrigger = 120;
+    }
     if($('#main').length > 0){
         small_width = $('#main').width()+'px';
     }else{

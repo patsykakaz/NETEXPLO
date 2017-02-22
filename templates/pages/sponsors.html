@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load i18n static pages_tags mezzanine_tags blog_tags keyword_tags %}
+
+{% block meta_keywords %}{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block extra_css %}
+{# <link rel="stylesheet" href="{% static "css/test.css" %}"> #}
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.sponsor_box').height($('.sponsor_box').width());
+        $('.sponsor_box img').each(function(){
+            if($(this).height()<$(this).parent('.sponsor_box').height()){
+                console.log('XXX');
+                $(this).css('margin-top',($(this).parent('.sponsor_box').height()-$(this).height())/2);
+            }
+        });
+    });
+    $(window).resize(function(){
+        $('.sponsor_box').height($('.sponsor_box').width());
+        $('.sponsor_box img').each(function(){
+            if($(this).height()<$(this).parent('.sponsor_box').height()){
+                $(this).css('margin-top',($(this).parent('.sponsor_box').height()-$(this).height())/2);
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block meta_title %}{% endblock %}
+{% block title %}{% endblock %}
+
+{% block main %}
+
+<div id='header'>
+    <h1 class='text-center' style='color: {{ customColor }}'>Partenaires & Adhérents</h1>
+</div>
+<div id='main'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <h3 class='text-center'>Partenaires</h3>
+            </div>
+            {% for element in sponsors_A %}
+                <div class='sponsor_box col-md-3 col-sm-4 col-xs-4'>
+                    <img src='{{ MEDIA_URL }}{% thumbnail element.logo 0 450 %}' alt='logo {{ element.title }}' title='{{ element.title }}' />
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class='row'>
+            <div class='col-md-12'>
+                <h3 class='text-center'>Entreprises adhérentes</h3>
+            </div>
+            {% for element in sponsors_B %}
+                <div class='sponsor_box col-md-3 col-sm-4 col-xs-4'>
+                    <img src='{{ MEDIA_URL }}{% thumbnail element.logo 0 450 %}' alt='logo {{ element.title }}' title='{{ element.title }}' />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

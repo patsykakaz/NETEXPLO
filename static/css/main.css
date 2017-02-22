@@ -137,8 +137,8 @@ footer .separator{
     z-index: 9999;
     position: absolute;
     top: 0;
-    right: 10px;
-    max-width: 80px;
+    right: 2px;
+    max-width: 120px;
     overflow: hidden;
     display: inline-block;
 }
@@ -251,7 +251,8 @@ footer .separator{
 @media screen and (max-width: 768px){
     #i18n{}
     #i18n .form-control{
-        font-size: 9px;
+        height: 20px;
+        font-size: 10px;
     }
     .navbar-fake-deploy #nav-container{
         width: 100%;
@@ -263,6 +264,9 @@ footer .separator{
     }
     .nav.navbar-nav{
         margin-bottom: 20px;
+    }
+    .navbar-brand{
+        margin-top: 10px;
     }
     .nav > li > a, .nav > li > a:hover, .nav > li > a:focus, .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus{
         color: #373d40;
