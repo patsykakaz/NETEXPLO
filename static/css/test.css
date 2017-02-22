@@ -8,13 +8,15 @@
     overflow: hidden;
 }
 #header img{
+    position: relative;
     min-width: 100%;
+    max-width: 140%;
 }
 #main{
     position: relative;
     padding: 0 20px;
 }
-#header_overlay{
+#illustration_overlay{
     position: absolute;
     z-index: 5;
     width: 100%;
