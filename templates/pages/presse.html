@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load i18n static pages_tags mezzanine_tags blog_tags keyword_tags %}
+
+{% block meta_keywords %}{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "css/section.css" %}">
+<link rel="stylesheet" href="{% static "css/test.css" %}">
+<style type="text/css">
+    #cat_contact{
+        {% if LANGUAGE_CODE == 'fr' %}
+        left: calc(50% - 92px);
+        {% else %}
+        left: calc(50% - 67px);
+        {% endif %}
+        border: none;
+        border-radius: 0;
+        background-color: {{ customColor }};
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#illustration_container').css('max-height',$(window).height());
+        if($('#illustration').width()>$(window).width()){
+            console.log('move to the right');
+            $('#illustration').css('right',($('#illustration').width()-$(window).width())/2);
+        }else{
+            $('#illustration').css('right',0);
+        }
+        if($('#illustration').height()>$(window).height()){
+            $('#illustration').css('bottom',($('#illustration').height()-$(window).height())/2);
+        }else{
+            $('#illustration').css('bottom',0);
+        }
+    });
+    $(window).resize(function(){
+        $('#illustration_container').css('max-height',$(window).height());
+        if($('#illustration').width()>$(window).width()){
+            $('#illustration').css('right',($('#illustration').width()-$(window).width())/2);
+        }else{
+            $('#illustration').css('right',0);
+        }
+        if($('#illustration').height()>$(window).height()){
+            $('#illustration').css('bottom',($('#illustration').height()-$(window).height())/2);
+        }else{
+            $('#illustration').css('bottom',0);
+        }
+    });
+</script>
+{% endblock %}
+
+{% block meta_title %}{% endblock %}
+{% block title %}{% endblock %}
+
+{% block main %}
+
+<div id='header'>
+    <div id='illustration_container'>
+        <img id='illustration' src='{{ MEDIA_URL }}{% thumbnail Target.illustration 1600 0 %}' alt='illustration section' />
+        <div id='illustration_overlay'>
+            <btn id='cat_contact' class='btn btn-lg btn-default'>
+                <a href='mailto:'>
+                {% if LANGUAGE_CODE == 'fr' %}
+                    Nous contacter
+                {% else %}
+                    Contact us
+                {% endif %}
+                </a>
+            </btn>
+        </div>
+    </div>
+
+    <div class='container' style='width:100%; padding-right:0; padding-left:0;' >
+        <div id='caption' class='row' style='margin:20px; background-color:{{ Target.caption_color }}'>
+            <div class='col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-10 col-xs-offset-1'>
+                <img src='{% static "img/utils/pressbook.jpg" %}'  class='img-circle' />
+            </div>
+            <div class='col-md-7 col-sm-7 col-xs-12 text-justify' style='color:{{ Target.text_color }}'>
+                <h3 class='text-center'>
+                    Pressbook
+                </h3>
+                {% if Target.sub_title %}
+                    <h5 class='text-center'>
+                        {{ Target.sub_title|upper }}
+                    </h5>
+                {% endif %}
+                {{ Target.caption|richtext_filters|safe }}
+                {% if LANGUAGE_CODE == 'fr' %}
+                    Téléchargez le dossier
+                {% else %}
+                    Download the folder
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div id='main'>
+</div>
+
+{% endblock %}

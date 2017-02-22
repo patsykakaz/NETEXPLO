@@ -3,86 +3,49 @@
  * CSS DRAFT
  * ===============================================*/
 
-
 #header{
-    padding: 200px 0 160px 0;
-    background: linear-gradient(to bottom,rgba(0,0,0,.6) 0,rgba(0,0,0,.25) 30%,rgba(0,0,0,.15) 50%,rgba(0,0,0,.05) 100%);
-}
-#header h1{
-    position: relative;
-    z-index: 999; /* still under z-index of navbar */
-    text-transform: uppercase;
-    font-size: 38px;
-    font-family: 'intelosemibold';
-}
-
-#main{
-    margin-top: 30px;
-}
-#main h3{
-    margin: 50px 0 30px 0;
-    text-transform: uppercase;
-    font-size: 28px;
-}
-.sponsor_box{
-    margin: 20px;
     overflow: hidden;
-    /*border: 1px solid grey;*/
-    -moz-transition: all 0.1s ease-out;
-    -webkit-transition: all 0.1s ease-out;
-    -o-transition: all 0.1s ease-out;
-    transition: all 0.1s ease-out;
 }
-.sponsor_box img{
+#illustration_container{
+    position: relative;
+    overflow: hidden;
+}
+#illustration{
+    position: relative;
+    min-width: 100%;
+    max-width: 140%;
+}
+#illustration_overlay{
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom,rgba(0,0,0,.8) 0,rgba(0,0,0,.2) 25%,rgba(0,0,0,.1) 61%,rgba(0,0,0,.05) 100%);
+}
+#cat_contact{
+    display: block;
+    position: absolute;
+    bottom: 7%;
+}#cat_contact a{
+    color: #FFFFFF;
+}
+
+#caption{
+    /*padding: 50px;*/
+}
+#caption h3{
+    text-transform: uppercase;
+}
+#caption img{
     max-width: 100%;
-    -moz-transition: all 0.3s ease-out;
-    -webkit-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-    -moz-filter: grayscale(100%);
-    filter: grayscale(100%);
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -o-transform: scale(1);
-    -ms-transform: scale(1);
-}
-.sponsor_box:hover img{
-    z-index: 3;
-    /*max-width: 60%;*/
-    -webkit-filter: grayscale(0%); /* Chrome, Safari, Opera */
-    -moz-filter: grayscale(0%);
-    filter: grayscale(0%);
-    -webkit-transform: scale(1.18);
-    -moz-transform: scale(1.18);
-    -o-transform: scale(1.18);
-    -ms-transform: scale(1.18);
+    max-height: 200px;
 }
 
 
 
-@media screen and (max-width: 991px){
-    #header{
-        padding: 180px 0 140px 0;
-    }
-    #header h1{
-        font-size: 32px;
-    }
-    #main h3{
-        margin: 40px 0 23px 0;
-        font-size: 24px;
-    }
-}
-@media screen and (max-width: 768px){
-    #header{
-        padding: 140px 0 100px 0;
-        background: linear-gradient(to bottom,rgba(0,0,0,.6) 0,rgba(0,0,0,.3) 28%,rgba(0,0,0,.15) 50%,rgba(0,0,0,.05) 100%);
-    }
-    #header h1{
-        font-size: 21px;
-    }
-    #main h3{
-        margin: 30px 0 15px 0;
-        font-size: 18px;
-    }
-}
+
+
+
+

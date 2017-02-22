@@ -13,13 +13,14 @@
     $(document).ready(function(){
         $('#illustration_container').css('max-height',$(window).height());
         if($('#illustration').width()>$(window).width()){
-            $('#illustration').css('right',($('#illustration').width()-$(window).width())/2).css('bottom',0);
+            $('#illustration').css('right',($('#illustration').width()-$(window).width())/2);
+        }else{
+            $('#illustration').css('right',0);
         }
-        // else if($('#illustration').height()>$(window).height()){
-            // $('#illustration').css('bottom',($('#illustration').height()-$(window).height())/2).css('right',0);
-        // }
-        else{
-            $('#illustration').css('bottom',0).css('right',0);
+        if($('#illustration').height()>$(window).height()){
+            $('#illustration').css('bottom',($('#illustration').height()-$(window).height())/2);
+        }else{
+            $('#illustration').css('bottom',0);
         }
         if($(window).width()>990){
             $('.middlize').each(function(){
@@ -28,7 +29,6 @@
                 // console.log(target.length);
                 // console.log(refH);
                 x = (refH - $(this).height())/2;
-                console.log(x);
                 $(this).css('margin-top',x);
             });
         }else{
@@ -38,13 +38,14 @@
     $(window).resize(function(){
         $('#illustration_container').css('max-height',$(window).height());
         if($('#illustration').width()>$(window).width()){
-            $('#illustration').css('right',($('#illustration').width()-$(window).width())/2).css('bottom',0);
+            $('#illustration').css('right',($('#illustration').width()-$(window).width())/2);
+        }else{
+            $('#illustration').css('bottom',0);
         }
-        // else if($('#illustration').height()>$(window).height()){
-            // $('#illustration').css('bottom',($('#illustration').height()-$(window).height())/2).css('right',0);
-        // }
-        else{
-            $('#illustration').css('bottom',0).css('right',0);
+        if($('#illustration').height()>$(window).height()){
+            $('#illustration').css('bottom',($('#illustration').height()-$(window).height())/2);
+        }else{
+            $('#illustration').css('right',0);
         }
         if($(window).width()>990){
             $('.middlize').each(function(){
@@ -53,7 +54,6 @@
                 // console.log(target.length);
                 // console.log(refH);
                 x = (refH - $(this).height())/2;
-                console.log(x);
                 $(this).css('margin-top',x);
             });
         }else{
