@@ -6,6 +6,7 @@ $(document).ready(function(){
     FullScreen();
     fillNET(customColor);
     fillOBS(customColor);
+    CenterH1();
     $('.navbar-toggle').click(function(){
         if($('.navbar').hasClass('navbar-deploy')){
             console.log('fake-deploy');
@@ -28,6 +29,7 @@ $(document).ready(function(){
 
 $(window).resize(function(){
     FullScreen();
+    CenterH1();
     if($(window).width()<768){
         navbarTrigger = 60;
     }else{
@@ -37,6 +39,13 @@ $(window).resize(function(){
 
 function NavBar(){
     // if($(window).scroll
+}
+
+function CenterH1(){
+    if($('#header h1').length){
+        $('#header h1').css('margin-top',($('#illustration_overlay').height()-$('#header h1').height())/2);
+        console.log($('#illustration_overlay').height());
+    }
 }
 
 function FullScreen(){
@@ -76,7 +85,9 @@ function FullScreen(){
     $(document).scroll(function(){
         if($(document).scrollTop() < navbarTrigger){
             $('.navbar').removeClass(' navbar-deploy');
-            $("video").get(0).play();
+            if($("video").length){
+                $("video").get(0).play();
+            }
             // $("video").css('opacity',1);
             if($('.navbar-collapse').hasClass('in')){
                 $('.navbar').addClass('navbar-fake-deploy');
@@ -84,12 +95,14 @@ function FullScreen(){
             }
         }else{
             $('.navbar').addClass('navbar-deploy');
-            if($(document).scrollTop() > navbarTrigger+$(window).height()*.5){
-                $("video").get(0).pause();
-                // $("video").css('opacity',.3);
-            }else{
-                $("video").get(0).play();
-                // $("video").css('opacity',1);
+            if($("video").length){
+                if($(document).scrollTop() > navbarTrigger+$(window).height()*.5){
+                    $("video").get(0).pause();
+                    // $("video").css('opacity',.3);
+                }else{
+                    $("video").get(0).play();
+                    // $("video").css('opacity',1);
+                }
             }
         }
         // !Gestion du LOGO

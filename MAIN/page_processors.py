@@ -52,6 +52,13 @@ def processor_section(request, page):
     # sponsors_B = Sponsor.objects.filter(type_sponsor="B")
     return locals()
 
+@processor_for(Section)
+def processor_section(request, page):
+    Target = Section.objects.get(pk=page.pk)
+    customColor = Target.color
+    network_all = Network.objects.all()
+    team_all = Team.objects.all()
+    return locals()
 
 
 

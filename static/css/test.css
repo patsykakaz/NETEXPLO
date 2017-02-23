@@ -2,3 +2,57 @@
 /*==================================================
  * CSS DRAFT
  * ===============================================*/
+
+
+#main{
+    padding: 0;
+}
+
+#network{
+    position: relative;
+    padding: 0 20px;
+}
+#team{
+    padding: 20px 0;
+    /*background-color: rgba(0,0,0,.2);*/
+}
+
+.team_box{
+    display: inline-block;
+    overflow: hidden;
+    margin: 0 -5px;
+    vertical-align: top;
+}
+.team_box img{
+    width: 100%;
+}
+.team_caption{
+    position: relative;
+    bottom: 0;
+    opacity: .9;
+    font-family: 'intelosemibold';
+    font-size: 17px;
+    color: #FFFFFF;
+    -moz-transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+.team_box:hover .team_caption{
+    bottom: 100%;
+}
+.team_line a, .team_line a:hover, .team_line a:visited, .team_line a:active{
+    color: #FFFFFF;
+}
+
+
+@media screen and (max-width: 991px){
+    .team_caption{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 768px){
+    .team_caption{
+        font-size: 12px;
+    }
+}

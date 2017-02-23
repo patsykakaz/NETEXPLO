@@ -43,6 +43,23 @@ Slot_fieldsets[0][1]["fields"].insert(-1, "caption")
 class SlotAdmin(PageAdmin):
         fieldsets = Slot_fieldsets
 
+Team_fieldsets = deepcopy(PageAdmin.fieldsets)
+Team_fieldsets[0][1]["fields"].insert(-1, "prenom")
+Team_fieldsets[0][1]["fields"].insert(-1, "fonction")
+Team_fieldsets[0][1]["fields"].insert(-1, "email")
+Team_fieldsets[0][1]["fields"].insert(-1, "illustration")
+class TeamAdmin(PageAdmin):
+        fieldsets = Team_fieldsets
+
+Network_fieldsets = deepcopy(PageAdmin.fieldsets)
+Network_fieldsets[0][1]["fields"].insert(-1, "prenom")
+Network_fieldsets[0][1]["fields"].insert(-1, "poste")
+Network_fieldsets[0][1]["fields"].insert(-1, "university")
+Network_fieldsets[0][1]["fields"].insert(-1, "ville")
+Network_fieldsets[0][1]["fields"].insert(-1, "pays")
+class NetworkAdmin(PageAdmin):
+        fieldsets = Network_fieldsets
+
 Sponsor_fieldsets = deepcopy(PageAdmin.fieldsets)
 Sponsor_fieldsets[0][1]["fields"].insert(-1, "logo")
 Sponsor_fieldsets[0][1]["fields"].insert(-1, "type_sponsor")
@@ -66,6 +83,8 @@ class PressFilesAdmin(PageAdmin):
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Slot, SlotAdmin)
+admin.site.register(Team, TeamAdmin)
+admin.site.register(Network, NetworkAdmin)
 admin.site.register(Sponsor, SponsorAdmin)
 admin.site.register(PressFiles, PressFilesAdmin)
 

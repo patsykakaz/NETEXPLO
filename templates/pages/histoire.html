@@ -6,6 +6,12 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static "css/section.css" %}">
+<link rel="stylesheet" href="{% static "css/test.css" %}">
+<style type="text/css">
+    .team_caption{
+        background-color: {{ customColor }};
+    }
+</style>
 {% endblock %}
 
 {% block extra_js %}
@@ -34,6 +40,7 @@
         }else{
             $('.middlize').css('margin-top',0);
         }
+        Team();
     });
     $(window).resize(function(){
         $('#illustration_container').css('max-height',$(window).height());
@@ -59,7 +66,24 @@
         }else{
             $('.middlize').css('margin-top',0);
         }
+        Team();
     });
+
+    function Team(){
+        if($(window).width()>991){
+            refD = $(window).width()/4+5.5;
+        }else if($(window).width()>768){
+            refD = $(window).width()/3+5.5;
+        }else{
+            refD = $(window).width()/2+5.5;
+        }
+        $('.team_size_token').width(refD).height(refD);
+        $('.team_caption').each(function(){
+            target = $(this).children('.team_caption_layer');
+            target.css('padding-top',(refD-target.height())/2);
+            console.log(target.height());
+        });
+    }
 </script>
 {% endblock %}
 
@@ -73,7 +97,7 @@
         <img id='illustration' src='{{ MEDIA_URL }}{% thumbnail Target.illustration 1600 0 %}' alt='illustration section' />
         {# <img id='illustration' src='/static/media/{{ Target.illustration }}' alt='illustration section' /> #}
         <div id='illustration_overlay'>
-            {# <h1 id='' class='text-center'>{{ Target.title }}</h1> #}
+            <h1 id='' class='text-center'>{{ Target.title }}</h1>
         </div>
     </div>
     <div class='container' style='width:100%; padding-right:0; padding-left:0;' >
@@ -85,30 +109,35 @@
         </div>
     </div>
 </div>
+
+
 <div id='main'>
-    {% for element in Target.slots %}
-        <div class='slot container' {% if element.color %}style='background:{{ element.color }}'{% endif %}>
-            <div class='row' style='color:{{ element.text_color }}'>
-                {% if element.pull_image_left %}
-                    <div class='middlize col-md-3 col-md-offset-1'>
-                        <img class='img-circle left' src='{{ MEDIA_URL }}{% thumbnail element.illustration 400 400 %}'>
+
+    <div id='network' class='hide'>
+        {% for element in network_all %}
+            {{ element.title }}
+        {% endfor %}
+    </div>
+
+    <div id='team'>
+        <div>
+        {% for element in team_all %}
+            <div class='team_box team_size_token'>
+                <img src='{{ MEDIA_URL }}{% thumbnail element.illustration 400 400 %}' alt='photo {{ element.prenom }} {{ element.title }}' />
+                <div class='team_size_token team_caption text-center'>
+                    <div class='team_caption_layer'>
+                        <div class='team_line'>{{ element.prenom }} {{ element.nom }}</div>
+                        <div class='team_line'>{{ element.fonction }}</div>
+                        <div class='team_line'>
+                            <a href='mailto:{{ element.email }}'>{{ element.email }}</a>
+                        </div>
                     </div>
-                    <div class='middlize col-md-6 col-md-offset-1'>
-                        <h4>{{ element.title }}</h4>
-                        {{ element.caption|richtext_filters|safe }}
-                    </div>
-                {% else %}
-                    <div class='middlize col-md-6 col-md-offset-1'>
-                        <h4>{{ element.title }}</h4>
-                        {{ element.caption|richtext_filters|safe }}
-                    </div>
-                    <div class='middlize col-md-3 col-md-offset-1'>
-                        <img class='img-circle right' src='{{ MEDIA_URL }}{% thumbnail element.illustration 400 400 %}'>
-                    </div>
-                {% endif %}
+                </div>
             </div>
+        {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+
 </div>
 
 {% endblock %}
