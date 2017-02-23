@@ -14,6 +14,9 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static "css/index.css" %}">
 <style type="text/css">
+    #carousel_overlay h1{
+        color: #FFFFFF;
+    }
     #main .slot{
         background-color: {{ Home.color_caption }};
         color: {{ Home.color_caption_text }}
@@ -45,9 +48,12 @@
     });
 
     function CenterBaseline(){
-        if($('#carousel_overlay h1').length){
-            $('#carousel_overlay h1').css('margin-top',($('#carousel_overlay').height()-$('#carousel_overlay h1').height())/2);
-        }
+        setTimeout(function(){
+            if($('#carousel_overlay h1').length){
+                // console.log("overlay height "+$('#carousel_overlay').height());
+                $('#carousel_overlay h1').css('margin-top',($('#carousel_overlay').height()-$('#carousel_overlay h1').height())/2);
+            }
+        },100);
     }
 </script>
 {% endblock %}

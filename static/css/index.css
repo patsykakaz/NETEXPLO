@@ -3,6 +3,8 @@
 ==========================================*/
 
 #carousel_overlay h1{
+    max-width: 70%;
+    margin: auto;
     position: relative;
     z-index: 999; /* still under z-index of navbar */
     text-transform: uppercase;
@@ -80,6 +82,7 @@ footer{
 
 @media screen and (max-width: 991px){
     #carousel_overlay h1{
+        max-width: 768;
         font-size: 50px;
     }
     #main .slot{
@@ -91,6 +94,7 @@ footer{
 
 @media screen and (max-width: 768px){
     #carousel_overlay h1{
+        max-width: 500px;
         font-size: 40px;
     }
     #main .slot{
@@ -108,6 +112,12 @@ footer{
         z-index: -100;
         transform: translateY(0%) translateX(0%);
         /*background-size: cover;*/
+    }
+}
+@media screen and (max-width: 500px){
+    #carousel_overlay h1{
+        max-width: 400px;
+        font-size: 30px;
     }
 }
 

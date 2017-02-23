@@ -230,7 +230,7 @@ footer .separator{
 }
 
 .navbar-nav{
-    margin-top: 25px;
+    margin-top: 30px;
 }
 .navbar-collapse.navbar-right{
     border-bottom: 1px solid;
@@ -288,13 +288,24 @@ footer .separator{
     .nav > li > a{
         padding: 10px 8px;
     }
-}    
+}   
+@media screen and (max-width: 850px){ 
+    .navbar{
+        font-size: 11px;
+    }
+    .nav > li > a{
+        padding: 10px 5px;
+    }
+}
 @media screen and (max-width: 768px){
     #i18n{}
     #i18n .form-control{
         height: 20px;
         padding: 2px;
         font-size: 10px;
+    }
+    .navbar{
+        font-size: 12px;
     }
     .navbar-fake-deploy #nav-container{
         width: 100%;

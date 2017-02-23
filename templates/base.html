@@ -17,7 +17,7 @@
 ">
 
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-<title>{% if settings.SITE_TITLE %}{{ settings.SITE_TITLE }}{% endif %}</title>
+{# <title>{% if settings.SITE_TITLE %}{{ settings.SITE_TITLE }}{% endif %}</title> #}
 <title>{{ settings.SITE_TITLE }}</title>
 <link rel="shortcut icon" href="{% static "img/icon.png" %}">
 
@@ -53,7 +53,7 @@
     .navbar-fake-deploy .navbar-nav > .active > a, .navbar-fake-deploy .navbar-nav > .active > a:hover, .navbar-fake-deploy .navbar-nav > .active > a:focus,
     /* For Footer */
     .nav-footer, .nav-footer > ul > li > a, .nav-footer > ul > li > a:hover,
-    footer, footer a
+    footer, footer a, #SoMe a
     {
         color: {{ customColor }};
     }
@@ -181,22 +181,22 @@
         <div class='col-md-4 col-xs-12'>
             <div id='SoMe'>
                 <a href='https://twitter.com/netexplo' target='blank'>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
                 </a>
                 <a href='https://www.facebook.com/Netexplo' target='blank'>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                </span>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    </span>
                 </a>
                 <a href='mailto:hello@netexplo.com'>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-                </span>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                    </span>
                 </a>
             </div>
         </div>
