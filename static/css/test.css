@@ -40,11 +40,11 @@ strong{
 }
 .team_caption{
     position: relative;
-    /*z-index: 3;*/
     bottom: 0;
     opacity: .9;
+    background-color: rgba(255,255,255,.93);
     font-size: 17px;
-    color: #FFFFFF;
+    color: #333;
     -moz-transition: all 0.2s ease-out;
     -webkit-transition: all 0.2s ease-out;
     -o-transition: all 0.2s ease-out;
