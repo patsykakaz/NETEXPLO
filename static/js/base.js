@@ -44,7 +44,6 @@ function NavBar(){
 function CenterH1(){
     if($('#header h1').length){
         $('#header h1').css('margin-top',($('#illustration_overlay').height()-$('#header h1').height())/2);
-        console.log($('#illustration_overlay').height());
     }
 }
 

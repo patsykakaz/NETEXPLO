@@ -6,7 +6,7 @@ from .models import *
 
 
 class TranslatedHomePage(TranslationOptions):
-    fields = ('sub_title','caption')
+    fields = ('baseline', 'sub_title','caption')
 
 class TranslatedSection(TranslationOptions):
     fields = ('caption','sub_title')

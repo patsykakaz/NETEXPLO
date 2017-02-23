@@ -2,6 +2,14 @@
         HOME STYLES
 ==========================================*/
 
+#carousel_overlay h1{
+    position: relative;
+    z-index: 999; /* still under z-index of navbar */
+    text-transform: uppercase;
+    font-size: 72px;
+    font-family: 'intelohairline';
+}
+
 #home_video{
     width: 100%;
     overflow: hidden;
@@ -71,6 +79,9 @@ footer{
 
 
 @media screen and (max-width: 991px){
+    #carousel_overlay h1{
+        font-size: 50px;
+    }
     #main .slot{
         padding: 60px;
         line-height: 28px;
@@ -79,6 +90,9 @@ footer{
 }
 
 @media screen and (max-width: 768px){
+    #carousel_overlay h1{
+        font-size: 40px;
+    }
     #main .slot{
         padding: 40px;
         line-height: 23px;

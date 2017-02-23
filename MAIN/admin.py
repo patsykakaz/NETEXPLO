@@ -7,6 +7,7 @@ from mezzanine.pages.models import RichTextPage
 from .models import *
 
 HomePage_fieldsets = deepcopy(PageAdmin.fieldsets)
+HomePage_fieldsets[0][1]["fields"].insert(-1, "baseline")
 HomePage_fieldsets[0][1]["fields"].insert(-1, "sub_title")
 HomePage_fieldsets[0][1]["fields"].insert(-1, "color")
 HomePage_fieldsets[0][1]["fields"].insert(-1, "color_caption")

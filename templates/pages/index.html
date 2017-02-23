@@ -25,6 +25,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#carousel').css('max-height',$(window).height());
+        CenterBaseline();
         if($(window).width()>991 && $('#main.absolute').length){
             $('footer').css('top',$(window).height()+$('#main').outerHeight());
         }
@@ -36,11 +37,18 @@
         })
     });
     $(window).resize(function(){
+        CenterBaseline();
         $('#carousel').css('max-height',$(window).height());
         if($(window).width()>991 && $('#main.absolute').length){
             $('footer').css('top',$(window).height()+$('#main').outerHeight());
         }
     });
+
+    function CenterBaseline(){
+        if($('#carousel_overlay h1').length){
+            $('#carousel_overlay h1').css('margin-top',($('#carousel_overlay').height()-$('#carousel_overlay h1').height())/2);
+        }
+    }
 </script>
 {% endblock %}
 
@@ -92,6 +100,9 @@
             {# <span class="sr-only">Next</span> #}
         {# </a> #}
         <div id='carousel_overlay'>
+            {% if Home.baseline %}
+                <h1 class='text-center'>{{ Home.baseline }}</h1>
+            {% endif %}
         </div>
     </div>
     </div>
