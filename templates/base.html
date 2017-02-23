@@ -5,9 +5,18 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block meta_description %}
+    {% block meta_description %}
+    {% if LANGUAGE_CODE == 'fr' %}
+            Netexplo Observatory étudie les impacts des nouveaux usages numériques sur les citoyens, les clients et les collaborateurs des entreprises. Avec une vocation claire : faciliter la transformation digitale.
+    {% else %}
+            Netexplo Observatory étudie les impacts des nouveaux usages numériques sur les citoyens, les clients et les collaborateurs des entreprises. Avec une vocation claire : faciliter la transformation digitale.
+    {% endif %}
+    {% endblock %}
+{% endblock %}
+
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-<meta name="description" content="{% block meta_description %}{% endblock %}">
-{# <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title> #}
+<title>{% if settings.SITE_TITLE %}{{ settings.SITE_TITLE }}{% endif %}</title>
 <title>{{ settings.SITE_TITLE }}</title>
 <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
