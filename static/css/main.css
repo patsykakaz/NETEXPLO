@@ -15,6 +15,10 @@ a, a:hover, a:visited, a:active{
     color: #333;
     text-decoration: none;
 }
+h1{
+    color: #FFFFFF;
+    text-shadow: 0 0 1px rgba(0,0,0,.25);
+}
 
 ._NET_, ._EXPLO_, ._OBS_{
     -webkit-transition: fill .45s, stroke-dasharray .75s, stroke-opacity 1.5s ease;

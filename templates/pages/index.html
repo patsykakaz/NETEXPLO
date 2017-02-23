@@ -14,9 +14,9 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static "css/index.css" %}">
 <style type="text/css">
-    #carousel_overlay h1{
-        color: #FFFFFF;
-    }
+    /*#carousel_overlay h1{*/
+        /*color: #FFFFFF;*/
+    /*}*/
     #main .slot{
         background-color: {{ Home.color_caption }};
         color: {{ Home.color_caption_text }}
@@ -39,6 +39,19 @@
             keyboard: true, 
         })
     });
+    $(window).load(function(){
+        $('#carousel').css('max-height',$(window).height());
+        CenterBaseline();
+        if($(window).width()>991 && $('#main.absolute').length){
+            $('footer').css('top',$(window).height()+$('#main').outerHeight());
+        }
+        $('.carousel').carousel({
+            interval: {{ Home.slider_timer }}, 
+            pause: null, 
+            wrap: true, 
+            keyboard: true, 
+        })
+    });
     $(window).resize(function(){
         CenterBaseline();
         $('#carousel').css('max-height',$(window).height());
@@ -48,12 +61,14 @@
     });
 
     function CenterBaseline(){
-        setTimeout(function(){
+        // setTimeout(function(){
             if($('#carousel_overlay h1').length){
                 // console.log("overlay height "+$('#carousel_overlay').height());
-                $('#carousel_overlay h1').css('margin-top',($('#carousel_overlay').height()-$('#carousel_overlay h1').height())/2);
+                // if($('#carousel_overlay').height() > $('#carousel_overlay h1').height()){
+                    $('#carousel_overlay h1').css('margin-top',($(window).height()-$('#carousel_overlay h1').height())/2);
+                // }
             }
-        },100);
+        // },100);
     }
 </script>
 {% endblock %}

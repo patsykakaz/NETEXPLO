@@ -44,7 +44,7 @@ function NavBar(){
 function CenterH1(){
     setTimeout(function(){
         if($('#header h1').length){
-            $('#header h1').css('margin-top',($('#illustration_overlay').height()-$('#header h1').height())/2);
+            $('#header h1').css('margin-top',($(window).height()-$('#header h1').height())/2);
         }
     },100);
 }

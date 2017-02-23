@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-
-{% load i18n %}
+{% load i18n static pages_tags mezzanine_tags blog_tags keyword_tags %}
 
 {% block meta_title %}
 {% trans "Error" %}
@@ -10,9 +9,53 @@
 {% trans "Error" %}
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "css/sponsors.css" %}">
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.sponsor_box').height($('.sponsor_box').width());
+        $('.sponsor_box img').each(function(){
+            if($(this).height()<$(this).parent('.sponsor_box').height()){
+                $(this).css('margin-top',($(this).parent('.sponsor_box').height()-$(this).height())/2);
+            }
+        });
+    });
+    $(window).resize(function(){
+        $('.sponsor_box').height($('.sponsor_box').width());
+        $('.sponsor_box img').each(function(){
+            if($(this).height()<$(this).parent('.sponsor_box').height()){
+                $(this).css('margin-top',($(this).parent('.sponsor_box').height()-$(this).height())/2);
+            }
+        });
+    });
+</script>
+{% endblock %}
+
 {% block main %}
-<div class="panel panel-danger">
-	<div class="panel-heading"><h3 class="panel-title">{% trans "Error" %}</h3></div>
-	<div class="panel-body">{% trans "Sorry, an error occurred." %}</div>
+
+<div id='header'>
+    <h1 class='text-center' style='color: {{ customColor }}'>
+        {% if LANGUAGE_CODE == 'fr' %}
+            ERREUR 404 :(
+        {% else %}
+            ERROR 404 :(
+        {% endif %}
+    </h1>
 </div>
+<div id='main'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class="panel panel-danger">
+                    <div class="panel-heading"><h3 class="panel-title">{% trans "Error" %}</h3></div>
+                    <div class="panel-body">{% trans "Sorry, an error occurred." %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

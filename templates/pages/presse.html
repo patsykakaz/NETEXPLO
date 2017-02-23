@@ -211,6 +211,7 @@
                 <div id='logos'>
                     <h5>Logos</h5>
                     <div class='row'>
+                    {% if M_A_logo %}
                     {% for element in M_A_logo %}
                         <div class='col-md-4 col-sm-4 col-xs-6'>
                             <div class='mediaAsset_box'>
@@ -233,11 +234,17 @@
                             </div>
                         </div>
                     {% endfor %}
+                    {% else %}
+                        <div class='text-muted text-center'>
+                            {% if LANGUAGE_CODE == 'fr' %}Aucun logo disponible{% else %}No logo available{% endif %}
+                        </div>
+                    {% endif %}
                     </div>
                 </div>
                 <div id='photos'>
                     <h5>Photos</h5>
                     <div class='row'>
+                    {% if M_A_photo %}
                     {% for element in M_A_photo %}
                         <div class='col-md-4 col-sm-4 col-xs-6'>
                             <div class='mediaAsset_box'>
@@ -260,6 +267,11 @@
                             </div>
                         </div>
                     {% endfor %}
+                    {% else %}
+                        <div class='text-muted text-center'>
+                            {% if LANGUAGE_CODE == 'fr' %}Aucun photo disponible{% else %}No photos available{% endif %}
+                        </div>
+                    {% endif %}
                     </div>
                 </div>
                 <div id='videos'>
@@ -267,6 +279,7 @@
                         {% if LANGUAGE_CODE == 'fr' %}Vidéos{% else %}Videos{% endif %}
                     </h5>
                     <div class='row'>
+                    {% if M_A_video %}
                     {% for element in M_A_video %}
                         <div class='col-md-4 col-sm-4 col-xs-6'>
                             <div class='mediaAsset_box'>
@@ -289,6 +302,11 @@
                             </div>
                         </div>
                     {% endfor %}
+                    {% else %}
+                        <div class='text-muted text-center'>
+                            {% if LANGUAGE_CODE == 'fr' %}Aucun vidéo disponible{% else %}No videos available{% endif %}
+                        </div>
+                    {% endif %}
                     </div>
                 </div>
             </div>
