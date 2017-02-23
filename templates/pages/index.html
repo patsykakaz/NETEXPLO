@@ -71,7 +71,7 @@
                 <div class="item {% if forloop.counter0 == 0 %}active{% endif %}">
                     <a {% if not element.lien %}href='javascript:void(0)'{% else %} href='{{ element.lien }}'{% endif %}
                         {% if element.external %}target='blank'{% endif %} >
-                        <img src='{{ MEDIA_URL }}{{ element.image }}' alt='illustration {{ element }}'>
+                        <img src='{{ MEDIA_URL }}{% thumbnail element.image 1600 0 %}' alt='illustration {{ element }}'>
                     </a>
                 </div>
             {% endfor %}

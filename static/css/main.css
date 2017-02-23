@@ -7,8 +7,13 @@ body{
     max-width: 100%;
     margin: 0;
     /*margin-top: 20px;*/
-    font-family: 'intelolight';
+    /*font-family: 'intelolight';*/
+    font-family: 'intelohairline';
     letter-spacing: 1.4px;
+}
+a, a:hover, a:visited, a:active{
+    color: #333;
+    text-decoration: none;
 }
 
 ._NET_, ._EXPLO_, ._OBS_{
@@ -87,7 +92,12 @@ footer .separator{
 
 @media screen and (max-width: 991px){
     #SoMe{
-        bottom: 30px;
+        margin: auto;
+        margin-bottom: 0;
+        margin-top: 20px;
+        bottom: 0;
+        text-align: center;
+        opacity: 1;
     }
     footer .separator{
         margin-top: 25px;
@@ -103,6 +113,7 @@ footer .separator{
     #SoMe{
         margin: auto;
         margin-bottom: 0;
+        margin-top: 10px;
         bottom: 0;
         text-align: center;
         opacity: 1;
@@ -171,7 +182,7 @@ footer .separator{
     /*min-height: 80px;*/
     background-color: transparent;
     border: none;
-    font-size: 15px;
+    font-size: 13px;
     /*font-family: 'intelosemibold';*/
     -moz-transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
@@ -267,6 +278,17 @@ footer .separator{
     border-radius: 0;
 }
 
+@media screen and (max-width: 991px){
+    .navbar{
+        font-size: 12px;
+    }
+    #nav-container{
+        width: 100%;
+    }
+    .nav > li > a{
+        padding: 10px 8px;
+    }
+}    
 @media screen and (max-width: 768px){
     #i18n{}
     #i18n .form-control{

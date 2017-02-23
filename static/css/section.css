@@ -7,7 +7,7 @@
     z-index: 999; /* still under z-index of navbar */
     text-transform: uppercase;
     font-size: 72px;
-    /*font-family: 'intelosemibold';*/
+    font-family: 'intelohairline';
 }
 #illustration_container{
     position: relative;

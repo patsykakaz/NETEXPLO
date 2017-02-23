@@ -104,7 +104,7 @@
     <div id='illustration_container'>
         <img id='illustration' src='{{ MEDIA_URL }}{% thumbnail Target.illustration 1600 0 %}' alt='illustration section' />
         <div id='illustration_overlay'>
-            {# <h1 id='' class='text-center'>{{ Target.title }}</h1> #}
+            <h1 id='' class='text-center'>{{ Target.title }}</h1>
             <btn id='cat_contact' class='btn btn-lg btn-default'>
                 <a href='mailto:'>
                 {% if LANGUAGE_CODE == 'fr' %}
@@ -119,24 +119,41 @@
 
     <div class='slot' style='margin-bottom:0; background-color:{{ Target.caption_color }}'>
         <div id='caption' class='row'>
-            <div class='middlize col-md-3 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center'>
-                <img src='{% static "img/utils/pressbook.jpg" %}' />
+            <div class='middlize col-md-4 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center'>
+                <img src='{% static "img/utils/pressbook.png" %}' />
             </div>
-            <div class='middlize col-md-6 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 text-justify' style='color:{{ Target.text_color }}'>
+            <div class='middlize col-md-5 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 text-justify' style='color:{{ Target.text_color }}'>
                 <h3 class='text-center'>
-                    Pressbook
+                    Presskit
                 </h3>
+                <h5 class='text-center'>
+                    Presskit [FR]
+                    <a href='{% static "files/presskit_FR.pdf" %}'target='blank'>
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class='fa fa-cloud-download fa-stack-1x fa-inverse'></i>
+                        </span>
+                    </a>
+                </h5>
+                <h5 class='text-center'>
+                    {# {{ Target.sub_title|upper }} #}
+                    Presskit [EN]
+                    <a href='{% static "files/presskit_EN.pdf" %}' target='blank'>
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class='fa fa-cloud-download fa-stack-1x fa-inverse'></i>
+                        </span>
+                    </a>
+                </h5>
                 {% if Target.sub_title %}
-                    <h5 class='text-center'>
-                        {{ Target.sub_title|upper }}
-                    </h5>
+                        {# {{ Target.sub_title|upper }} #}
                 {% endif %}
-                {{ Target.caption|richtext_filters|safe }}
-                {% if LANGUAGE_CODE == 'fr' %}
-                    Téléchargez le dossier
-                {% else %}
-                    Download the folder
-                {% endif %}
+                {# {{ Target.caption|richtext_filters|safe }} #}
+                {# {% if LANGUAGE_CODE == 'fr' %} #}
+                    {# Téléchargez le dossier #}
+                {# {% else %} #}
+                    {# Download the folder #}
+                {# {% endif %} #}
             </div>
         </div>
     </div>
