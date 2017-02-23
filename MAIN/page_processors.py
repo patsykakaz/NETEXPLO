@@ -27,7 +27,8 @@ def processor_home(request, page):
 @processor_for(Section)
 def processor_section(request, page):
     Target = Section.objects.get(pk=page.pk)
-    Target.slots = Slot.objects.filter(master=Target)
+    Target_slots = Slot.objects.filter(master=Target)
+    print Target_slots
     customColor = Target.color
     return locals()
 
