@@ -20,6 +20,14 @@ strong{
     position: relative;
     padding: 0 20px;
 }
+#layer_network{
+    max-width: 100%;
+    overflow: auto;
+}
+#layer_network img{
+    max-width: 100%;
+}
+
 #team{
     padding: 20px 0;
     /*background-color: rgba(0,0,0,.2);*/
@@ -63,6 +71,15 @@ strong{
         font-size: 24px;
         margin-bottom: 25px;
     }
+    #network{
+        position: relative;
+        padding: 0 20px;
+    }
+    #layer_network{}
+    #layer_network img{
+        max-width: none;
+        width: 180%;
+    }
     .team_caption{
         font-size: 15px;
     }
@@ -71,6 +88,15 @@ strong{
     h3{
         font-size: 20px;
         margin-bottom: 20px;
+    }
+    #network{
+        position: relative;
+        padding: 0 20px;
+    }
+    #layer_network{}
+    #layer_network img{
+        max-width: none;
+        width: 300%;
     }
     .team_caption{
         font-size: 12px;

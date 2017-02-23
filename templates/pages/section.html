@@ -79,7 +79,10 @@
     <div class='container' style='width:100%; padding-right:0; padding-left:0;' >
         <div id='caption' class='row' style='margin:20px; background-color:{{ Target.caption_color }}'>
             <div class='col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-justify' style='color:{{ Target.text_color }}'>
-                <h3 class='text-center'>{{ Target.sub_title|upper }}</h3>
+                <h3 class='text-center'>
+                    <i class='fa fa-terminal fa-lg' style='color:{{ customColor }};'></i>
+                    {{ Target.sub_title|upper }}
+                </h3>
                 {{ Target.caption|richtext_filters|safe }}
             </div>
         </div>

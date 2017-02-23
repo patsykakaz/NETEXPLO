@@ -110,10 +110,18 @@
 
 <div id='main'>
 
-    <div id='network' class='hide'>
-        {% for element in network_all %}
-            {{ element.title }}
-        {% endfor %}
+    <div id='network'>
+        <h3 class='text-center' style='margin-bottom:0;'>
+            <i class='fa fa-terminal fa-lg' style='color:{{ customColor }};'></i>
+            {% if LANGUAGE_CODE == 'fr' %}
+                Réseau international
+            {% else %}
+                International network
+            {% endif %}
+        </h3>
+        <div id='layer_network'>
+            <img src='{% static "img/reseau_international.png" %}' />
+        </div>
     </div>
 
     <div id='team'>
