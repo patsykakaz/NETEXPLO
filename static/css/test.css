@@ -7,6 +7,11 @@
 #main{
     padding: 0;
 }
+h3{
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
 
 #network{
     position: relative;
@@ -20,14 +25,19 @@
 .team_box{
     display: inline-block;
     overflow: hidden;
+    position: relative;
+    z-index: 4;
     margin: 0 -5px;
     vertical-align: top;
+}.team_box:hover{
+    z-index: 4;
 }
 .team_box img{
     width: 100%;
 }
 .team_caption{
     position: relative;
+    /*z-index: 3;*/
     bottom: 0;
     opacity: .9;
     font-family: 'intelosemibold';
@@ -39,7 +49,7 @@
     transition: all 0.2s ease-out;
 }
 .team_box:hover .team_caption{
-    bottom: 100%;
+    bottom: calc(100% + 5px);
 }
 .team_line a, .team_line a:hover, .team_line a:visited, .team_line a:active{
     color: #FFFFFF;
@@ -47,11 +57,19 @@
 
 
 @media screen and (max-width: 991px){
+    h3{
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
     .team_caption{
         font-size: 15px;
     }
 }
 @media screen and (max-width: 768px){
+    h3{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
     .team_caption{
         font-size: 12px;
     }

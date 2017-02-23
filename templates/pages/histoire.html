@@ -77,11 +77,11 @@
         }else{
             refD = $(window).width()/2+5.5;
         }
-        $('.team_size_token').width(refD).height(refD);
+        $('.team_box').width(refD).height(refD);
+        $('.team_caption').width(refD).height(refD+10);
         $('.team_caption').each(function(){
             target = $(this).children('.team_caption_layer');
             target.css('padding-top',(refD-target.height())/2);
-            console.log(target.height());
         });
     }
 </script>
@@ -121,12 +121,20 @@
 
     <div id='team'>
         <div>
+            <h3 class='text-center'>
+                <i class='fa fa-terminal fa-lg' style='color:{{ customColor }};'></i>
+                {% if LANGUAGE_CODE == 'fr' %}
+                    L'équipe
+                {% else %}
+                    Netexplo's Team
+                {% endif %}
+            </h3>
         {% for element in team_all %}
-            <div class='team_box team_size_token'>
+            <div class='team_box'>
                 <img src='{{ MEDIA_URL }}{% thumbnail element.illustration 400 400 %}' alt='photo {{ element.prenom }} {{ element.title }}' />
-                <div class='team_size_token team_caption text-center'>
+                <div class='team_caption text-center'>
                     <div class='team_caption_layer'>
-                        <div class='team_line'>{{ element.prenom }} {{ element.nom }}</div>
+                        <div class='team_line'>{{ element.prenom }} {{ element.title }}</div>
                         <div class='team_line'>{{ element.fonction }}</div>
                         <div class='team_line'>
                             <a href='mailto:{{ element.email }}'>{{ element.email }}</a>
