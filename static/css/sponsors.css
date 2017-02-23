@@ -13,7 +13,6 @@
     z-index: 999; /* still under z-index of navbar */
     text-transform: uppercase;
     font-size: 38px;
-    font-family: 'intelosemibold';
 }
 
 #main{

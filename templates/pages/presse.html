@@ -106,7 +106,7 @@
         <div id='illustration_overlay'>
             <h1 id='' class='text-center'>{{ Target.title }}</h1>
             <btn id='cat_contact' class='btn btn-lg btn-default'>
-                <a href='mailto:'>
+                <a href='mailto:hello@netexplo.com'>
                 {% if LANGUAGE_CODE == 'fr' %}
                     Nous contacter
                 {% else %}
@@ -173,7 +173,7 @@
                     <div class='row news_box'>
                         <div class='col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0'>
                             <a href='{{ element.get_absolute_url }}'>
-                                <img class='img-thumbnail' src='{{ MEDIA_URL }}{% thumbnail element.featured_image 600 400 %}' alt='illustration news' />
+                                <img src='{{ MEDIA_URL }}{% thumbnail element.featured_image 600 400 %}' alt='illustration news' />
                             </a>
                         </div>
                         <div class='col-md-5 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0'>
