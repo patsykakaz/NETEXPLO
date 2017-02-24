@@ -1,15 +1,26 @@
 {% extends "base.html" %}
 {% load i18n static pages_tags mezzanine_tags blog_tags keyword_tags %}
 
-{# {% block meta_keywords %}NETEXPLO OBSERVATORY{% endblock %} #}
-{% block meta_description %}
-    {% if LANGUAGE_CODE == 'fr' %}
-            Netexplo Observatory étudie les impacts des nouveaux usages numériques sur les citoyens, les clients et les collaborateurs des entreprises. Avec une vocation claire : faciliter la transformation digitale.
-    {% else %}
-            Netexplo Observatory étudie les impacts des nouveaux usages numériques sur les citoyens, les clients et les collaborateurs des entreprises. Avec une vocation claire : faciliter la transformation digitale.
-    {% endif %}
-{% endblock %}
+{# {% block meta_description %} #}
+    {# {% if LANGUAGE_CODE == 'fr' %} #}
+            {# Netexplo Observatory étudie les impacts des nouveaux usages numériques sur les citoyens, les clients et les collaborateurs des entreprises. Avec une vocation claire : faciliter la transformation digitale. #}
+    {# {% else %} #}
+            {# Netexplo Observatory étudie les impacts des nouveaux usages numériques sur les citoyens, les clients et les collaborateurs des entreprises. Avec une vocation claire : faciliter la transformation digitale. #}
+    {# {% endif %} #}
+{# {% endblock %} #}
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
 
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static "css/index.css" %}">
@@ -72,9 +83,6 @@
     }
 </script>
 {% endblock %}
-
-{% block meta_title %}{% trans "Home" %}{% endblock %}
-{% block title %}{% trans "Home" %}{% endblock %}
 
 {# {% block breadcrumb_menu %} #}
 {# <li class="active">{% trans "Home" %}</li> #}

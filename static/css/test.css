@@ -61,6 +61,10 @@ strong{
 .team_box:hover .team_caption{
     bottom: calc(100% + 5px);
 }
+.team_line{
+    max-width: 80%;
+    margin: auto;
+}
 .team_line a, .team_line a:hover, .team_line a:visited, .team_line a:active{
     color: #FFFFFF;
 }
@@ -83,6 +87,9 @@ strong{
     .team_caption{
         font-size: 15px;
     }
+    .team_line{
+        max-width: 80%;
+    }
 }
 @media screen and (max-width: 767px){
     h3{
@@ -100,5 +107,8 @@ strong{
     }
     .team_caption{
         font-size: 12px;
+    }
+    .team_line{
+        max-width: 80%;
     }
 }
