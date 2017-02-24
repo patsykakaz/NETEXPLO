@@ -12,8 +12,10 @@ from MAIN.models import *
 
 @processor_for('/')
 def processor_home(request, page):
+    color_list = ["#29D6B9","#528DD9","#45BABA","#8BCABB","#F7C542","#E3708D","#65BDD6","#CC959B","#29D6B9",]
+    customColor = secure_random.choice(color_list)
     Home = HomePage.objects.last()
-    customColor = Home.color
+    # customColor = Home.color
     Videos = HomeVideo.objects.filter(master=Home)
     if len(Videos) > 1:
         print 'VIDEO'+str(len(Videos))
