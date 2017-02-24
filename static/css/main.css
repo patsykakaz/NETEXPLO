@@ -46,6 +46,9 @@ h1{
 /* ../NAVBAR */
 
 footer{
+    position: absolute;
+    width: 100%;
+    left: 0;
     /*margin-top: 100px;*/
     padding: 80px 40px;
     border-top: 1px solid rgba(0,0,0,.1);
@@ -53,6 +56,9 @@ footer{
     color: #1d262b;
     text-transform: uppercase;
     text-decoration: underline;
+}
+#footer{
+    width: 100%;
 }
 .nav-footer{
     text-align: left;
