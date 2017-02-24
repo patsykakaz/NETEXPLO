@@ -298,10 +298,10 @@ footer .separator{
         font-size: 11px;
     }
     .nav > li > a{
-        padding: 10px 5px;
+        padding: 10px 6px;
     }
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
     #i18n{}
     #i18n .form-control{
         height: 20px;
@@ -310,6 +310,9 @@ footer .separator{
     }
     .navbar{
         font-size: 12px;
+    }
+    .navbar-nav{
+        margin-top: 0;
     }
     .navbar-fake-deploy #nav-container{
         width: 100%;
