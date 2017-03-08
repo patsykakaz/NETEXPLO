@@ -20,7 +20,7 @@ def processor_home(request, page):
     if len(Videos) > 1:
         print 'VIDEO'+str(len(Videos))
         Home.video = secure_random.choice(Videos)
-        customColor = Home.video.color
+        customColmor = Home.video.color
         darken_navbar = Home.video.darken_navbar
     else:
         Home.captions = HomeCaption.objects.filter(master=Home)

@@ -21,8 +21,8 @@ class HomeVideoInline(admin.TabularInline):
     model = HomeVideo
     extra = 5
 class HomePageAdmin(PageAdmin):
-        fieldsets = HomePage_fieldsets
-        inlines = (HomeCaptionInline,HomeVideoInline)
+    fieldsets = HomePage_fieldsets
+    inlines = (HomeCaptionInline,HomeVideoInline)
 
 Section_fieldsets = deepcopy(PageAdmin.fieldsets)
 Section_fieldsets[0][1]["fields"].insert(-1, "illustration")

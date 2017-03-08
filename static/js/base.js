@@ -44,7 +44,12 @@ function NavBar(){
 function CenterH1(){
     setTimeout(function(){
         if($('#header h1').length){
-            $('#header h1').css('margin-top',($(window).height()-$('#header h1').height())/2);
+            //if($(window).width()>991){
+            //    $('#header h1').css('margin-top',($(window).height()-$('#header h1').height())/2);
+            //}else{
+                refH = $("#illustration_container").height();
+                $('#header h1').css('margin-top',(refH-$('#header h1').height())/2).css('opacity',1);
+            //}
         }
     },100);
 }
