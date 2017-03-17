@@ -11,4 +11,4 @@ local_settings.py
 !/static/fonts
 !/static/img
 !/static/files
-
+/static/img/utils

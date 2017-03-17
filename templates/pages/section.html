@@ -33,18 +33,11 @@
         }else{
             $('#illustration').css('bottom',0);
         }
-        if($(window).width()>990){
-            $('.middlize').each(function(){
-                referent = $(this).parent().parent();
-                refH = referent.height();
-                // console.log(target.length);
-                // console.log(refH);
-                x = (refH - $(this).height())/2;
-                $(this).css('margin-top',x);
-            });
-        }else{
-            $('.middlize').css('margin-top',0);
-        }
+        // Middlize();
+    });
+    $(window).on('load', function(){
+        console.log('load');
+        Middlize();
     });
     $(window).resize(function(){
         $('#illustration_container').css('max-height',$(window).height());
@@ -58,19 +51,30 @@
         }else{
             $('#illustration').css('bottom',0);
         }
-        if($(window).width()>990){
-            $('.middlize').each(function(){
-                referent = $(this).parent().parent();
-                refH = referent.height();
-                // console.log(target.length);
-                // console.log(refH);
-                x = (refH - $(this).height())/2;
-                $(this).css('margin-top',x);
-            });
-        }else{
-            $('.middlize').css('margin-top',0);
-        }
+        Middlize();
     });
+
+    function Middlize(){
+        $('.middlize').each(function(){
+            if($(window).width()>990){
+                first = $(this).children('.middlize_target:first');
+                console.log('first is '+first.html());
+                last = $(this).children('.middlize_target:last');
+                console.log('last is '+last.html());
+                if(first.height()>last.height()){
+                    refH = first.height();
+                    target = last;
+                }else{
+                    refH = last.height();
+                    target = first;
+                }
+                target.css('margin-top',(refH-target.height())/2);
+            }else{
+                target.css('margin-top',0);
+            }
+            $(this).children('.middlize_target').css('opacity',1);
+        });
+    }
 </script>
 {% endblock %}
 
@@ -99,21 +103,21 @@
 <div id='main'>
     {% for element in Target_slots %}
         <div class='slot container' {% if element.color %}style='background:{{ element.color }}'{% endif %}>
-            <div class='row' style='color:{{ element.text_color }}'>
+            <div class='row middlize' style='color:{{ element.text_color }}'>
                 {% if element.pull_image_left %}
-                    <div class='middlize col-md-3 col-md-offset-1'>
+                    <div class='col-md-3 middlize_target col-md-offset-1'>
                         <img class='img-circle left' src='{{ MEDIA_URL }}{% thumbnail element.illustration 400 400 %}'>
                     </div>
-                    <div class='middlize col-md-6 col-md-offset-1'>
-                        <h4>{{ element.title }}</h4>
+                    <div class='col-md-6 middlize_target col-md-offset-1 fade'>
+                        <h4>{{ element.title|title }}</h4>
                         {{ element.caption|richtext_filters|safe }}
                     </div>
                 {% else %}
-                    <div class='middlize col-md-6 col-md-offset-1'>
-                        <h4>{{ element.title }}</h4>
+                    <div class='col-md-6 middlize_target col-md-offset-1 fade'>
+                        <h4>{{ element.title|title }}</h4>
                         {{ element.caption|richtext_filters|safe }}
                     </div>
-                    <div class='middlize col-md-3 col-md-offset-1'>
+                    <div class='col-md-3 middlize_target col-md-offset-1'>
                         <img class='img-circle right' src='{{ MEDIA_URL }}{% thumbnail element.illustration 400 400 %}'>
                     </div>
                 {% endif %}

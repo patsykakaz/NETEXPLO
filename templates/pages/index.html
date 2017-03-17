@@ -25,24 +25,12 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static "css/index.css" %}">
 <style type="text/css">
-    /*#carousel_overlay h1{*/
-        /*color: #FFFFFF;*/
-    /*}*/
+    #cat_news{
+        background-color: {{ customColor }};
+    }
     #main .slot{
         background-color: {{ Home.color_caption }};
         color: {{ Home.color_caption_text }}
-    }
-    #cat_news{
-        font-family: 'intelolight';
-        position: absolute;
-        z-index: 99;
-        bottom: 20px;
-        left: 20px;
-        padding: 10px 15px;
-        background-color: {{ customColor }};
-    }#cat_news a{
-        color: #FFFFFF;
-        text-shadow: 1px 1px rgba(0,0,0,.3);
     }
 </style>
 {% endblock %}
@@ -84,14 +72,18 @@
     });
 
     function CenterBaseline(){
-        // setTimeout(function(){
-            if($('#carousel_overlay h1').length){
-                // console.log("overlay height "+$('#carousel_overlay').height());
-                // if($('#carousel_overlay').height() > $('#carousel_overlay h1').height()){
-                    $('#carousel_overlay h1').css('margin-top',($(window).height()-$('#carousel_overlay h1').height())/2);
-                // }
-            }
-        // },100);
+        setTimeout(function(){
+            //if($(window).width()>991){
+            //    $('#header h1').css('margin-top',($(window).height()-$('#header h1').height())/2);
+            //}else{
+                refH = $("#carousel_overlay").height();
+                console.log(refH);
+                $('#carousel_overlay h1').css('margin-top',(refH-$('#carousel_overlay h1').height())/2 + $('#nav-container').outerHeight()/4);
+                //setTimeout(function(){
+                    $('#carousel_overlay h1').css('opacity',1);
+                //},300);
+            //}
+        },100);
     }
 </script>
 {% endblock %}
@@ -129,7 +121,25 @@
                 <h1 class='text-center'>{{ Home.baseline }}</h1>
             {% endif %}
         </div>
-        <div id='cat_news'><a href='/presse#blogSpace'>NEWS</a></div>
+        <div id='cat_news'>
+            <div class='text-center'>
+                <a id='cat_news_link' href='/presse#blogSpace' class='text-center' {% if not request.user.is_staff %}style='margin-bottom:0;' {% endif %}>
+                    NEWS
+                </a>
+            </div>
+            {% if request.user.is_staff %}
+            <div class='text-center'>
+                <a href='#'>
+                    <video width="112" height="63" playsinline autoplay loop muted>
+                        <source src='{% static "video/movie_forum.mp4" %}' type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div>Teaser Forum 2017</div>
+                </a>
+            </div>
+            {% endif %}
+        </div>
     </div>
     </div>
 {% endif %}

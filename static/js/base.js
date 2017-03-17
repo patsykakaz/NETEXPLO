@@ -48,7 +48,10 @@ function CenterH1(){
             //    $('#header h1').css('margin-top',($(window).height()-$('#header h1').height())/2);
             //}else{
                 refH = $("#illustration_container").height();
-                $('#header h1').css('margin-top',(refH-$('#header h1').height())/2).css('opacity',1);
+                $('#header h1').css('margin-top',(refH-$('#header h1').height())/2 + $('#nav-container').outerHeight()/4);
+                //setTimeout(function(){
+                    $('#header h1').css('opacity',1);
+                //},300);
             //}
         }
     },100);
