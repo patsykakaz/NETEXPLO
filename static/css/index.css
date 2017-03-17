@@ -76,6 +76,9 @@
     margin-bottom: 10px;
     font-size: 14px;
 }
+#video_forum{
+    display: block;
+}
 
 
 
@@ -103,6 +106,12 @@
     #carousel_overlay h1{
         max-width: 768;
         font-size: 50px;
+    }
+    #cat_news_link{
+        margin-bottom: 0;
+    }
+    #video_forum{
+        display: none;
     }
     #main .slot{
         padding: 60px;
@@ -147,6 +156,7 @@
 ==========================================*/
 
 #carousel_container{
+    position: relative;
     max-width: 100%;
     overflow: hidden;
 }
