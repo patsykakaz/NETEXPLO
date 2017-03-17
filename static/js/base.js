@@ -95,7 +95,7 @@ function FullScreen(){
         if($(document).scrollTop() < navbarTrigger){
             $('.navbar').removeClass(' navbar-deploy');
             if($("video").length){
-                $("video").get(0).play();
+                // $("video").get(0).play();
             }
             // $("video").css('opacity',1);
             if($('.navbar-collapse').hasClass('in')){
@@ -106,10 +106,10 @@ function FullScreen(){
             $('.navbar').addClass('navbar-deploy');
             if($("video").length){
                 if($(document).scrollTop() > navbarTrigger+$(window).height()*.5){
-                    $("video").get(0).pause();
+                    // $("video").get(0).pause();
                     // $("video").css('opacity',.3);
                 }else{
-                    $("video").get(0).play();
+                    // $("video").get(0).play();
                     // $("video").css('opacity',1);
                 }
             }

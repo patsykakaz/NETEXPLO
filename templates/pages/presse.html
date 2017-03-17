@@ -39,6 +39,7 @@
         top: 0;
         right: -2px;
         opacity: 1;
+        text-shadow: none;
     }
     .modal-content{
         border: 0;
@@ -243,7 +244,7 @@
       {# </div> #}
       <div class="modal-body">
         <button id='close_video' class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class='fa fa-lg fa-window-close' style='color:{{ customColor }};'></i></span></button>
-        <video width="100%" height="auto" playsinline autoplay>
+        <video width="100%" height="auto" playsinline>
             <source src='{% static "videos/movie_forum.mp4" %}' type="video/mp4">
             <source src="movie.ogg" type="video/ogg">
             Your browser does not support the video tag.

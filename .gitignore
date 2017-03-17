@@ -13,4 +13,4 @@ local_settings.py
 !/static/files
 !/static/videos
 !/static/media/press
-/static/img/utils
+!/static/img/utils
