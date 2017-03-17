@@ -33,6 +33,23 @@
         color: {{ PressFiles_container.color }};
         border-color: {{ PressFiles_container.color }};
     }
+    .modal-dialog{
+        width: 80%;
+    }
+    .close, .close:hover{
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        right: -2px;
+        opacity: 1;
+    }
+    .modal-content{
+        border: 0;
+    }
+    .modal-body{
+        padding: 0;
+        line-height: 0;
+    }
 </style>
 {% endblock %}
 
@@ -70,6 +87,17 @@
         $('.mediaAsset_box').each(function(){
             target = $(this).children('a');
             target.css('margin-top',(MAH-target.height())/2);
+        });
+
+        $('.open_video').click(function(){
+            $("video").get(0).play();
+        });
+        $('.close_video').click(function(){
+            $("video").get(0).pause();
+        });
+        $('#modal_forum_2017').click(function(event){
+            $("video").get(0).pause();
+            $(this).modal('toggle')
         });
     });
     $(window).resize(function(){
@@ -177,6 +205,56 @@
                 <h3 class='text-center' style='color:{{ customColor }};'>
                     News
                 </h3>
+                <!-- PROMO FORUM 2017 -->
+                    <div class='row news_box'>
+                        <div class='col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0'>
+                            <a href='javascript:void(0)' class='open_video'  type="button" data-toggle="modal" data-target="#modal_forum_2017">
+                                <img src='{% static "media/press/forum_2017.png" %}' alt='illustration news' />
+                            </a>
+                        </div>
+                        <div class='col-md-5 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0'>
+                            <h6 class='text-center'>
+                                {# <i class='fa fa-genderless'></i> #}
+                                Teaser Forum 2017
+                            </h6>
+                            <div class='text-justify'>
+                                {{ element.description_from_content|safe }}
+                            </div>
+                            <div class='text-center'>
+                                <button class='open_video' type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#modal_forum_2017" style='margin-top:10px; color: {{ customColor }};'>
+                                    <i class='fa fa-lg fa-ellipsis-h'></i>
+                                    {% if LANGUAGE_CODE == 'fr' %}
+                                        Voir la vidéo
+                                    {% else %}
+                                        Watch the video
+                                    {% endif %}
+                                </button>
+                            </div>
+<div id='modal_forum_2017' class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      {# <div class="modal-header hide"> #}
+        {# <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> #}
+        {# <h4 class="modal-title">Modal title</h4> #}
+      {# </div> #}
+      <div class="modal-body">
+        <button class='close_video' type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class='fa fa-lg fa-window-close' style='color:{{ customColor }};'></i></span></button>
+        <video width="100%" height="auto" playsinline autoplay>
+            <source src='{% static "videos/movie_forum.mp4" %}' type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="modal-footer hide">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+                        </div>
+                    </div>
+                <!-- END PROMO FORUM 2017 -->
                 {% for element in blogPosts %}
                     <div class='row news_box'>
                         <div class='col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0'>

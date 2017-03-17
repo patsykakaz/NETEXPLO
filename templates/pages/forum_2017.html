@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load i18n static pages_tags mezzanine_tags blog_tags keyword_tags %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "css/section.css" %}">
+<link rel="stylesheet" href="{% static "css/test.css" %}">
+<style type="text/css">
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function(){
+    });
+    $(window).resize(function(){
+    });
+
+</script>
+{% endblock %}
+
+{% block main %}
+
+<div id='header'>
+    <div id='illustration_container'>
+        <img id='illustration' src='{{ MEDIA_URL }}{% thumbnail Target.illustration 1600 0 %}' alt='illustration section' />
+        {# <img id='illustration' src='/static/media/{{ Target.illustration }}' alt='illustration section' /> #}
+        <div id='illustration_overlay'>
+            <h1 id='' class='text-center'>{{ Target.title }}</h1>
+        </div>
+    </div>
+    <div class='container' style='width:100%; padding-right:0; padding-left:0;' >
+        <div id='caption' class='row' style='margin:20px; background-color:{{ Target.caption_color }}'>
+            <div class='col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-justify' style='color:{{ Target.text_color }}'>
+                <h3 class='text-center'>{{ Target.sub_title|upper }}</h3>
+                {{ Target.caption|richtext_filters|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id='main'>
+
+    <div id='network'>
+        <h3 class='text-center' style='margin-bottom:0;'>
+            <i class='fa fa-terminal fa-lg' style='color:{{ customColor }};'></i>
+            {% if LANGUAGE_CODE == 'fr' %}
+                Réseau international
+            {% else %}
+                International network
+            {% endif %}
+        </h3>
+        <div id='layer_network'>
+            <img src='{% static "img/reseau_international.png" %}' />
+        </div>
+    </div>
+
+    <div id='team'>
+        <div>
+            <h3 class='text-center'>
+                <i class='fa fa-terminal fa-lg' style='color:{{ customColor }};'></i>
+                {% if LANGUAGE_CODE == 'fr' %}
+                    L'équipe
+                {% else %}
+                    Netexplo's Team
+                {% endif %}
+            </h3>
+        {% for element in team_all %}
+            <div class='team_box'>
+                <img src='{{ MEDIA_URL }}{% thumbnail element.illustration 400 400 %}' alt='photo {{ element.prenom }} {{ element.title }}' />
+                <div class='team_caption text-center'>
+                    <div class='team_caption_layer'>
+                        <div class='team_line'><strong>{{ element.prenom|title }} {{ element.title|title }}</strong></div>
+                        <div class='team_line'>{{ element.fonction }}</div>
+                        <div class='team_line'>
+                            <a href='mailto:hello@netexplo.com?subject=Hello {{ element.prenom }}!'>
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i style="color:{{ customColor }};" class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
