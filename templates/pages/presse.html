@@ -33,6 +33,11 @@
         color: {{ PressFiles_container.color }};
         border-color: {{ PressFiles_container.color }};
     }
+    #cat_video{
+        border: none;
+        background-color: {{ customColor }};
+        color: #FFFFFF;
+    }
     .close, .close:hover{
         z-index: 999;
         position: absolute;
@@ -198,6 +203,7 @@
             </div>
         </div>
     </div>
+    <div id='ANCHOR_NEWS'></div>
 </div>
 
 
@@ -226,8 +232,8 @@
                                 {{ element.description_from_content|safe }}
                             </div>
                             <div class='text-center'>
-                                <button type="button" class="open_video btn btn-default btn-lg" data-toggle="modal" data-target="#modal_forum_2017" style='margin-top:10px; color: {{ customColor }};'>
-                                    <i class='fa fa-lg fa-ellipsis-h'></i>
+                                <button id='cat_video' type="button" class="open_video btn btn-default btn-lg" data-toggle="modal" data-target="#modal_forum_2017" style='margin-top:10px;'>
+                                    <i class='fa fa-lg fa-video-camera'></i>
                                     {% if LANGUAGE_CODE == 'fr' %}
                                         Voir la vidéo
                                     {% else %}
