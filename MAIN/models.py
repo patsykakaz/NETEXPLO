@@ -99,7 +99,13 @@ class Team(Page):
     prenom = models.CharField(max_length=255,null=False,blank=False)
     fonction = models.CharField(max_length=255,null=False,blank=False)
     email = models.EmailField(null=False,blank=True)
-    illustration = FileField(verbose_name=_("illustrationTeam"),
+    illustration_1 = FileField(verbose_name=_("illustrationTeam"),
+        upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Team"),
+        format="Image", max_length=255, null=False, blank=True)
+    illustration_2 = FileField(verbose_name=_("illustrationTeam"),
+        upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Team"),
+        format="Image", max_length=255, null=False, blank=True)
+    illustration_3 = FileField(verbose_name=_("illustrationTeam"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Team"),
         format="Image", max_length=255, null=False, blank=True)
 

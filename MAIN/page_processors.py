@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import random
+from random import randint
 secure_random = random.SystemRandom()
 
 from django.db.models import Q
@@ -61,6 +62,14 @@ def processor_section(request, page):
     customColor = Target.color
     network_all = Network.objects.all().order_by('?')
     team_all = Team.objects.all().order_by('?')
+    for element in team_all:
+        x = randint(1,3)
+        if x == 1:
+            element.illustration = element.illustration_1
+        elif x == 2:
+            element.illustration = element.illustration_2
+        else: 
+            element.illustration = element.illustration_3
     return locals()
 
 

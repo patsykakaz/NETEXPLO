@@ -48,7 +48,9 @@ Team_fieldsets = deepcopy(PageAdmin.fieldsets)
 Team_fieldsets[0][1]["fields"].insert(-1, "prenom")
 Team_fieldsets[0][1]["fields"].insert(-1, "fonction")
 Team_fieldsets[0][1]["fields"].insert(-1, "email")
-Team_fieldsets[0][1]["fields"].insert(-1, "illustration")
+Team_fieldsets[0][1]["fields"].insert(-1, "illustration_1")
+Team_fieldsets[0][1]["fields"].insert(-1, "illustration_2")
+Team_fieldsets[0][1]["fields"].insert(-1, "illustration_3")
 class TeamAdmin(PageAdmin):
         fieldsets = Team_fieldsets
 
