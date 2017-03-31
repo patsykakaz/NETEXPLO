@@ -406,6 +406,41 @@
                     {% endif %}
                     </div>
                 </div>
+                <!-- FORUM ASSETS -->
+                    <div id='forum'>
+                    <h5>Forum</h5>
+                    <div class='row'>
+                    {% if M_A_forum %}
+                    {% for element in M_A_forum %}
+                        <div class='col-md-4 col-sm-4 col-xs-6'>
+                            <div class='mediaAsset_box'>
+                                <a href='{{ element.file.url }}' target='blank'>
+                                {% if element.image_file %}
+                                    <img src='{{ MEDIA_URL }}{% thumbnail element.image_file 400 300 %}' />
+                                {% else %}
+                                    {% include "netexplo.svg" %}
+                                {% endif %}
+                                </a>
+                            </div>
+                            <div class='mediaAsset_caption text-center'>
+                                {{ element.title }}
+                                <a style='position:relative; left:5px; color:{{ PressFiles_container.color }};' href='{{ element.file.url }}' target='blank'>
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class='fa fa-cloud-download fa-stack-1x fa-inverse'></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                        <div class='text-muted text-center'>
+                            {% if LANGUAGE_CODE == 'fr' %}Aucun élément disponible{% else %}No element available{% endif %}
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+                <!-- ./FORUM ASSETS -->
             </div>
         </div>
     </div>

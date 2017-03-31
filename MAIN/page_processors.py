@@ -52,6 +52,7 @@ def processor_section(request, page):
     M_A_logo = MediaAsset.objects.filter(type_asset='Logo')
     M_A_video  = MediaAsset.objects.filter(type_asset='Video')
     M_A_photo  = MediaAsset.objects.filter(type_asset='Photo')
+    M_A_forum  = MediaAsset.objects.filter(type_asset='Forum')
     # sponsors_A = Sponsor.objects.filter(type_sponsor="A")
     # sponsors_B = Sponsor.objects.filter(type_sponsor="B")
     return locals()
@@ -64,12 +65,12 @@ def processor_section(request, page):
     team_all = Team.objects.all().order_by('?')
     for element in team_all:
         x = randint(1,3)
-        if x == 1:
-            element.illustration = element.illustration_1
-        elif x == 2:
+        if x == 3 and element.illustration_3:
+            element.illustration = element.illustration_3
+        elif x == 2 and element.illustration_2:
             element.illustration = element.illustration_2
         else: 
-            element.illustration = element.illustration_3
+            element.illustration = element.illustration_1
     return locals()
 
 

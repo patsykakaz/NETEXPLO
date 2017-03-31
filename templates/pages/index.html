@@ -69,6 +69,13 @@
         if($(window).width()>991 && $('#main.absolute').length){
             $('footer').css('top',$(window).height()+$('#main').outerHeight());
         }
+        // if($(window).width()>991){
+        //     $('video').attr('width','224').attr('height','126');
+        //     console.log('big video');
+        // }else{
+        //     $('video').attr('width','168').attr('height','94.5');
+        //     console.log('small video');
+        // }
     });
 
     function CenterBaseline(){
@@ -77,20 +84,15 @@
             //    $('#header h1').css('margin-top',($(window).height()-$('#header h1').height())/2);
             //}else{
                 refH = $("#carousel_overlay").height();
-                console.log(refH);
-                $('#carousel_overlay h1').css('margin-top',(refH-$('#carousel_overlay h1').height())/2 + $('#nav-container').outerHeight()/4);
-                //setTimeout(function(){
-                    $('#carousel_overlay h1').css('opacity',1);
-                //},300);
+                // margin top for title = reH + 1/4.navbarH - k.titleH where k define on how high we want the title. (the greater k the higher the title)
+                $('#carousel_overlay h1').css('margin-top',(refH-$('#carousel_overlay h1').height())/2.7 + $('#nav-container').outerHeight()/4);
+
+                $('#carousel_overlay h1').css('opacity',1);
             //}
         },100);
     }
 </script>
 {% endblock %}
-
-{# {% block breadcrumb_menu %} #}
-{# <li class="active">{% trans "Home" %}</li> #}
-{# {% endblock %} #}
 
 {% block main %}
 
@@ -123,7 +125,7 @@
         </div>
     </div>
         <div id='cat_news'>
-            <div class='text-center'>
+            <div class='text-center hide'>
                 <a id='cat_news_link' href='/presse#ANCHOR_NEWS' class='text-center' {% if not request.user.is_staff %}style='margin-bottom:0;' {% endif %}>
                     NEWS
                 </a>
@@ -131,13 +133,12 @@
             {# {% if request.user.is_staff %} #}
             <div id='video_forum' class='text-center'>
                 <a href='/presse#ANCHOR_NEWS'>
-                    <video width="112" height="63" playsinline autoplay loop muted>
+                    <video width="224" height="126" playsinline autoplay loop muted>
                         <source src='' type="videos/mp4">
-                        {# <source src='{% static "videos/movie_forum.mp4" %}' type="video/mp4"> #}
+                        <source src='{% static "videos/movie_forum.mp4" %}' type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                     </video>
-                    <div>Teaser Forum 2017</div>
                 </a>
             </div>
             {# {% endif %} #}
@@ -163,10 +164,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
         if($(window).width()>991){
-            console.log('video');
-            $('video').attr('src','{% static "videos/movie_forum.mp4" %}');
+            // $('video').attr('src','{% static "videos/movie_forum.mp4" %}');
         }else{
-            console.log('to small')
+            $('video').attr('width','168').attr('height','94.5');
         }
     });
 </script>

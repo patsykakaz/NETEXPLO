@@ -137,9 +137,9 @@
             <h3 class='text-center'>
                 <i class='fa fa-terminal fa-lg' style='color:{{ customColor }};'></i>
                 {% if LANGUAGE_CODE == 'fr' %}
-                    L'équipe
+                    TEAM
                 {% else %}
-                    Netexplo's Team
+                    TEAM
                 {% endif %}
             </h3>
         {% for element in team_all %}
@@ -152,8 +152,8 @@
                         <div class='team_line'>
                             <a href='mailto:hello@netexplo.com?subject=Hello {{ element.prenom }}!'>
                                 <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i style="color:{{ customColor }};" class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    <i style="color:{{ customColor }};" class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
                                 </span>
                             </a>
                         </div>

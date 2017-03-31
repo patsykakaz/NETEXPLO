@@ -48,6 +48,14 @@ class HomePage(Page, RichText):
     slider_timer = models.IntegerField(default=3000, help_text='intervalle, en ms, du sliders')
     caption = RichTextField()
 
+    class Meta:
+        verbose_name='HOMEPAGE'
+        # ordering = ['title']
+
+    def save(self, *args, **kwargs):
+        self.in_menus = []
+        super(HomePage, self).save(*args, **kwargs)
+
 class HomeVideo(models.Model):
     master = models.ForeignKey("HomePage")
     title = models.CharField(max_length=255, null=False,blank=False)
@@ -75,15 +83,27 @@ class Section(Page,RichText):
     sub_title = models.CharField(null=False, blank=True, max_length=255, verbose_name='Sous-titre de la section')
     caption = RichTextField()
 
+    class Meta:
+        verbose_name='SECTION'
+        # ordering = ['title']
+
+    def save(self, *args, **kwargs):
+        self.in_menus = []
+        super(Section, self).save(*args, **kwargs)
+
 class Slot(Page,RichText):
     master = models.ForeignKey("Section")
     illustration = FileField(verbose_name=_("illustrationSlot"),
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Slot"),
         format="Image", max_length=255, null=False, blank=True)
-    color = ColorField(default='#FFFFFF')
-    text_color = ColorField(default='#333')
+    color = ColorField(default='#FFFFFF', verbose_name='couleur du fond du slot')
+    text_color = ColorField(default='#333', verbose_name='couleur du texte placé dans le slot')
     pull_image_left = models.BooleanField(default=True, verbose_name='Placer l\'image à gauche', help_text='Décochez pour placer l\'image à droite')
     caption = RichTextField()
+
+    class Meta:
+        verbose_name='SLOT'
+        # ordering = ['title']
 
     def save(self, *args, **kwargs):
         self.in_menus = []
@@ -109,6 +129,10 @@ class Team(Page):
         upload_to=upload_to("MAIN.HomeVideoCaption.illustration", "Team"),
         format="Image", max_length=255, null=False, blank=True)
 
+    class Meta:
+        verbose_name='TEAM MEMBER'
+        # ordering = ['title']
+
     def save(self, *args, **kwargs):
         self.in_menus = []
         if not self.parent:
@@ -124,6 +148,10 @@ class Network(Page):
     university = models.CharField(max_length=255,null=False,blank=False)
     ville = models.CharField(max_length=255,null=False,blank=False)
     pays = models.CharField(max_length=255,null=False,blank=False)
+
+    class Meta:
+        verbose_name='NETWORK MEMBER'
+        # ordering = ['title']
 
     def save(self, *args, **kwargs):
         self.in_menus = []
@@ -146,6 +174,10 @@ class Sponsor(Page):
                     choices=type_choices, null=False, blank=False, verbose_name='Type de partenaire')
     lien = models.URLField(null=False, blank=True)
 
+    class Meta:
+        verbose_name='PARTENAIRE'
+        # ordering = ['title']
+
     def save(self, *args, **kwargs):
         self.in_menus = []
         if not self.parent:
@@ -159,6 +191,7 @@ class Sponsor(Page):
 class PressFiles(Page):
     caption_color = ColorField(default='#edf1f2', help_text='Couleur de fond du slot MEDIA ASSETS')
     color = ColorField(default='#333', help_text='couleur du texte du slot MEDIA ASSETS')
+
     def save(self, *args, **kwargs):
         self.in_menus = []
         super(PressFiles, self).save(*args, **kwargs)
@@ -168,6 +201,7 @@ class MediaAsset(models.Model):
         ("Logo",'Logo'),
         ("Video",'Video'),
         ("Photo",'Photo'),
+        ("Forum",'Forum'),
     )
     type_asset = models.CharField(max_length=200, 
                     choices=type_choices, null=False, blank=False, verbose_name='Type de fichier')
