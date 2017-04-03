@@ -21,14 +21,16 @@ def processor_home(request, page):
         customColor = secure_random.choice(color_list)
     except: 
         customColor = '#528DD9'
-    Videos = HomeVideo.objects.filter(master=Home)
-    if len(Videos) > 1:
-        print 'VIDEO'+str(len(Videos))
-        Home.video = secure_random.choice(Videos)
-        customColmor = Home.video.color
-        darken_navbar = Home.video.darken_navbar
-    else:
-        Home.captions = HomeCaption.objects.filter(master=Home)
+    last_video = BlogPost.objects.exclude(video="").last()
+    print "last blog w/video = " + str(last_video)
+    # Videos = HomeVideo.objects.filter(master=Home)
+    # if len(Videos) > 1:
+    #     print 'VIDEO'+str(len(Videos))
+    #     Home.video = secure_random.choice(Videos)
+    #     customColmor = Home.video.color
+    #     darken_navbar = Home.video.darken_navbar
+    # else:
+    Home.captions = HomeCaption.objects.filter(master=Home)
     return locals()
 
 @processor_for(Section)

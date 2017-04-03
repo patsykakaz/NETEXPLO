@@ -121,24 +121,25 @@
             {% endif %}
         </div>
     </div>
+        {% if last_video %}
         <div id='cat_news'>
             <div class='text-center hide'>
                 <a id='cat_news_link' href='/presse#ANCHOR_NEWS' class='text-center' {% if not request.user.is_staff %}style='margin-bottom:0;' {% endif %}>
                     NEWS
                 </a>
             </div>
-            {# {% if request.user.is_staff %} #}
             <div id='video_forum' class='text-center'>
                 <a href='/presse#ANCHOR_NEWS'>
                     <video width="280" height="157.5" playsinline autoplay loop muted>
                         <source src='' type="videos/mp4">
-                        <source src='{% static "videos/movie_forum.mp4" %}' type="video/mp4">
+                        {# <source src='{% static "videos/movie_forum.mp4" %}' type="video/mp4"> #}
+                        <source src='{{ MEDIA_URL }}{{ last_video.video }}' type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                     </video>
                 </a>
             </div>
-            {# {% endif %} #}
+        {% endif %}
         </div>
     </div>
 {% endif %}
