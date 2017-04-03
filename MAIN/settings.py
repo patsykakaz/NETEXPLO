@@ -66,7 +66,7 @@ EXTRA_MODEL_FIELDS = (
         # Positional args for field class.
         (_("Video"),),
         # Keyword args for field class.
-        {"blank": True, "upload_to": "video", "max_length": 250},
+        {"blank": True, "upload_to": "videos", "max_length": 250},
     ),
     # file = FileField(upload_to=upload_to("MAIN.HomeVideoCaption.video", "video"), max_length=255, null=False,blank=False)
 )
