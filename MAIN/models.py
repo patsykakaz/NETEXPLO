@@ -42,9 +42,9 @@ from colorfield.fields import ColorField
 class HomePage(Page, RichText):
     baseline =models.CharField(null=False, blank=True, max_length=255, verbose_name='Baseline (sur le carousel)')
     sub_title = models.CharField(null=False, blank=True, max_length=255, verbose_name='Sous-titre de la section')
-    color = ColorField(default='#528DD9', help_text='Couleur identifiante de la page')
-    color_caption = ColorField(default='#E8ECED', help_text='couleur de fond du paragraphe de la home')
-    color_caption_text = ColorField(default='#333', help_text='couleur du texte du paragraphe de la home')
+    color_list = models.CharField(max_length=1000, default='#528DD9,', verbose_name='Couleur page', help_text='entrez uniquement des codes HEX séparés par des virgules : #528DD9, #328F99, #UU76FT')
+    color_caption = ColorField(default='#E8ECED', verbose_name='couleur fond paragraphe')
+    color_caption_text = ColorField(default='#333', verbose_name='couleur texte paragraphe')
     slider_timer = models.IntegerField(default=3000, help_text='intervalle, en ms, du sliders')
     caption = RichTextField()
 
@@ -191,6 +191,8 @@ class Sponsor(Page):
 class PressFiles(Page):
     caption_color = ColorField(default='#edf1f2', help_text='Couleur de fond du slot MEDIA ASSETS')
     color = ColorField(default='#333', help_text='couleur du texte du slot MEDIA ASSETS')
+    pressKit_fr = models.FileField(upload_to='press/pressKit/', null=False, blank=False)
+    pressKit_en = models.FileField(upload_to='press/pressKit/', null=True, blank=False)
 
     def save(self, *args, **kwargs):
         self.in_menus = []

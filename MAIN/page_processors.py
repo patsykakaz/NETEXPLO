@@ -13,10 +13,14 @@ from MAIN.models import *
 
 @processor_for('/')
 def processor_home(request, page):
-    color_list = ["#29D6B9","#528DD9","#45BABA","#8BCABB","#F7C542","#E3708D","#65BDD6","#CC959B","#29D6B9",]
-    customColor = secure_random.choice(color_list)
+    # color_list = ["#29D6B9","#528DD9","#45BABA","#8BCABB","#F7C542","#E3708D","#65BDD6","#CC959B","#29D6B9",]
     Home = HomePage.objects.last()
-    # customColor = Home.color
+    try: 
+        color_list = Home.color_list
+        color_list = str(color_list).strip().split(',')
+        customColor = secure_random.choice(color_list)
+    except: 
+        customColor = '#528DD9'
     Videos = HomeVideo.objects.filter(master=Home)
     if len(Videos) > 1:
         print 'VIDEO'+str(len(Videos))
@@ -48,6 +52,8 @@ def processor_section(request, page):
     target = Section.objects.get(pk=page.pk)
     PressFiles_container = PressFiles.objects.last()
     customColor = target.color
+    pressKit_fr = PressFiles_container.pressKit_fr
+    pressKit_en = PressFiles_container.pressKit_en
     blogPosts = BlogPost.objects.all()[:12]
     M_A_logo = MediaAsset.objects.filter(type_asset='Logo')
     M_A_video  = MediaAsset.objects.filter(type_asset='Video')

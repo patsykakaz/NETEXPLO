@@ -172,25 +172,30 @@
                 <h3 class='text-center'>
                     Presskit
                 </h3>
+                {% if pressKit_fr %}
                 <h5 class='text-center'>
                     Presskit [FR]
-                    <a href='{% static "files/presskit_FR.pdf" %}'target='blank'>
+                    {# <a href='{% static "files/presskit_FR.pdf" %}'target='blank'> #}
+                    <a href='{{ pressKit_fr.url }}' target='blank' download>
                         <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-circle fa-stack-2x" style='color:{{customColor}};'></i>
                             <i class='fa fa-cloud-download fa-stack-1x fa-inverse'></i>
                         </span>
                     </a>
                 </h5>
+                {% endif %}
+                {% if pressKit_en %}
                 <h5 class='text-center'>
-                    {# {{ Target.sub_title|upper }} #}
                     Presskit [EN]
-                    <a href='{% static "files/presskit_EN.pdf" %}' target='blank'>
+                    {# <a href='{% static "files/presskit_EN.pdf" %}' target='blank'> #}
+                    <a href='{{ pressKit_en.url }}' target='blank' download>
                         <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-circle fa-stack-2x" style='color:{{customColor}};'></i>
                             <i class='fa fa-cloud-download fa-stack-1x fa-inverse'></i>
                         </span>
                     </a>
                 </h5>
+                {% endif %}
                 {% if Target.sub_title %}
                         {# {{ Target.sub_title|upper }} #}
                 {% endif %}

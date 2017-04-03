@@ -57,19 +57,19 @@ from django.utils.translation import ugettext_lazy as _
 # field instance. When specifying the field class, the path
 # ``django.models.db.`` can be omitted for regular Django model fields.
 #
-# EXTRA_MODEL_FIELDS = (
-    # (
-    #     # Dotted path to field.
-    #     "mezzanine.blog.models.BlogPost.image",
-    #     # Dotted path to field class.
-    #     "somelib.fields.ImageField",
-    #     # Positional args for field class.
-    #     (_("Image"),),
-    #     # Keyword args for field class.
-    #     {"blank": True, "upload_to": "blog"},
-    # ),
-    # Example of adding a field to *all* of Mezzanine's content types:
-# )
+EXTRA_MODEL_FIELDS = (
+    (
+        # Dotted path to field.
+        "mezzanine.blog.models.BlogPost.video",
+        # Dotted path to field class.
+        "mezzanine.core.fields.FileField",
+        # Positional args for field class.
+        (_("Video"),),
+        # Keyword args for field class.
+        {"blank": True, "upload_to": "MAIN.video", "max_length": 250},
+    ),
+    # file = FileField(upload_to=upload_to("MAIN.HomeVideoCaption.video", "video"), max_length=255, null=False,blank=False)
+)
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #

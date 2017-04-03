@@ -2,14 +2,16 @@
 
 from copy import deepcopy
 from django.contrib import admin
-from mezzanine.pages.admin import PageAdmin
 from mezzanine.pages.models import RichTextPage
+from mezzanine.pages.admin import PageAdmin
+from mezzanine.blog.admin import BlogPostAdmin
+from mezzanine.blog.models import BlogPost
 from .models import *
 
 HomePage_fieldsets = deepcopy(PageAdmin.fieldsets)
 HomePage_fieldsets[0][1]["fields"].insert(-1, "baseline")
 HomePage_fieldsets[0][1]["fields"].insert(-1, "sub_title")
-HomePage_fieldsets[0][1]["fields"].insert(-1, "color")
+HomePage_fieldsets[0][1]["fields"].insert(-1, "color_list")
 HomePage_fieldsets[0][1]["fields"].insert(-1, "color_caption")
 HomePage_fieldsets[0][1]["fields"].insert(-1, "color_caption_text")
 HomePage_fieldsets[0][1]["fields"].insert(-1, "slider_timer")
@@ -74,6 +76,8 @@ class SponsorAdmin(PageAdmin):
 Press_fieldsets = deepcopy(PageAdmin.fieldsets)
 Press_fieldsets[0][1]["fields"].insert(-1, "caption_color")
 Press_fieldsets[0][1]["fields"].insert(-1, "color")
+Press_fieldsets[0][1]["fields"].insert(-1, "pressKit_fr")
+Press_fieldsets[0][1]["fields"].insert(-1, "pressKit_en")
 class MediaAssetInline(admin.TabularInline):
     model = MediaAsset
     extra = 12
@@ -90,4 +94,19 @@ admin.site.register(Team, TeamAdmin)
 admin.site.register(Network, NetworkAdmin)
 admin.site.register(Sponsor, SponsorAdmin)
 admin.site.register(PressFiles, PressFilesAdmin)
+
+
+
+# BLOG ADMIN (model modified through settings)
+
+blog_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
+blog_fieldsets[0][1]["fields"].insert(-2, "video")
+
+class MyBlogPostAdmin(BlogPostAdmin):
+    fieldsets = blog_fieldsets
+
+admin.site.unregister(BlogPost)
+admin.site.register(BlogPost, MyBlogPostAdmin)
+
+
 
