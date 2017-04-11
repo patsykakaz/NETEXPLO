@@ -117,7 +117,9 @@
         </div>
         <div id='carousel_overlay'>
             {% if Home.baseline %}
-                <h1 class='text-center'>{{ Home.baseline }}</h1>
+                <h1 class='text-center'>
+                    {{ Home.baseline }}
+                </h1>
             {% endif %}
         </div>
     </div>
@@ -139,8 +141,21 @@
                     </video>
                 </a>
             </div>
-        {% endif %}
         </div>
+        {% else %}
+        <div id='cat_news'>
+            <div id='video_forum' class='text-center'>
+                <a href='/presse#ANCHOR_NEWS'>
+                    <video width="280" height="157.5" playsinline autoplay loop muted>
+                        <source src='' type="videos/mp4">
+                        <source src='{% static "videos/movie_forum.mp4" %}' type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+            </div>
+        </div>
+        {% endif %}
     </div>
 {% endif %}
 

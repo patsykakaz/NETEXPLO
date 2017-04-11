@@ -87,9 +87,9 @@ class Section(Page,RichText):
         verbose_name='SECTION'
         # ordering = ['title']
 
-    def save(self, *args, **kwargs):
-        self.in_menus = []
-        super(Section, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+        # self.in_menus = []
+        # super(Section, self).save(*args, **kwargs)
 
 class Slot(Page,RichText):
     master = models.ForeignKey("Section")
