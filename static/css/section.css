@@ -33,6 +33,12 @@
     left: 0;
     background: linear-gradient(to bottom,rgba(0,0,0,.8) 0,rgba(0,0,0,.4) 25%,rgba(0,0,0,.3) 61%,rgba(0,0,0,.15) 100%);
 }
+#illustration_overlay .dot{
+    position: relative;
+    bottom: 0;
+    left: 10px;
+    font-size: 12px;
+}
 #caption{
     padding: 75px 50px;
     line-height: 24px;

@@ -17,6 +17,11 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static "css/section.css" %}">
+<style type="text/css">
+    .dot i{
+        color: {{ customColor }};
+    }
+</style>
 {% endblock %}
 
 {% block extra_js %}
@@ -78,6 +83,7 @@
 </script>
 {% endblock %}
 
+
 {% block main %}
 
 <div id='header'>
@@ -85,7 +91,10 @@
         <img id='illustration' src='{{ MEDIA_URL }}{% thumbnail Target.illustration 1600 0 %}' alt='illustration section' />
         {# <img id='illustration' src='/static/media/{{ Target.illustration }}' alt='illustration section' /> #}
         <div id='illustration_overlay'>
-            <h1 id='' class='text-center'>{{ Target.title }}</h1>
+            <h1 class='text-center'>
+                <span class='dot'><i class='fa fa-circle'></i></span>
+                {{ Target.title }}
+            </h1>
         </div>
     </div>
     <div class='container' style='width:100%; padding-right:0; padding-left:0;' >
